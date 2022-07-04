@@ -1,0 +1,3 @@
+#!/bin/bash
+rclone mount GoogleDrive: $HOME/Cloud/GoogleDrive/ &
+rclone mount --vfs-cache-mode full OneDrive: $HOME/Cloud/OneDrive/ & 

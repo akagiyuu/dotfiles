@@ -1,0 +1,14 @@
+[Default Applications]
+text/plain=nvim.desktop
+text/html=chromium.desktop
+image/png=feh.desktop
+image/jpeg=feh.desktop
+image/gif=feh.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
+inode/directory=thunar.desktop
+
+[Added Associations]
+application/octet-stream=visual-studio-code.desktop;

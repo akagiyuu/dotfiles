@@ -1,0 +1,6 @@
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/AkagiYuu/neovim-config
+[submodule ".config/awesome/modules/bling"]
+	path = .config/awesome/modules/bling
+	url = https://github.com/BlingCorp/bling
