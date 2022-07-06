@@ -16,7 +16,7 @@ insidewrongcolor=00000000
 keyhlcolor=AAAAAAFF
 bshlcolor=AAAAAAFF
 
-i3lock "$ARGS" -i ~/Pictures/catppuccin/landscapes/Rainnight.jpg -F \
+i3lock "$ARGS" -i ~/Pictures/catppuccin/landscapes/Cloudsnight.jpg -F \
     --clock --force-clock --time-pos="w/2:h/2" --time-size=96 --time-color=FFFFFFFF \
     --date-str="$DATE" --date-pos="tx:ty+80" --date-size=32 --date-color=FFFFFFFF \
     --ind-pos="w/2-r/2:h-r*2" --radius 20 \

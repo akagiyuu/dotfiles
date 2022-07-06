@@ -12,7 +12,7 @@ set -x DOT_SAGE "$XDG_CONFIG_HOME"/sage
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths $HOME/Scripts $XDG_DATA_HOME/npm/bin $CARGO_HOME/bin $HOME/Applications/bat-extras/src
+set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths $HOME/Scripts $XDG_DATA_HOME/npm/bin $CARGO_HOME/bin $HOME/Applications/bat-extras/src $HOME/Applications/omnisharp
 
 set fish_greeting
 
@@ -43,3 +43,5 @@ set -x FZF_DEFAULT_OPTS "
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
+
+set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
