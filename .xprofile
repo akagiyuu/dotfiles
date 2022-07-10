@@ -4,7 +4,7 @@ xrandr --newmode  "1680x1050R" 119.00 1680 1728 1760 1840 1050 1053 1059 1080 +h
 xrandr --addmode VGA-1 1680x1050R
 xrandr --output VGA-1 --mode 1680x1050R
 picom --experimental-backends -b
-feh ~/Pictures/catppuccin/landscapes/evening-sky.png --bg-fill --no-fehbg
+/home/yuu/.fehbg --no-fehbg &
 
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 eval $(/usr/bin/gnome-keyring-daemon --start)
