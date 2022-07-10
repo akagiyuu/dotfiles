@@ -4,6 +4,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local rubato = require("modules.rubato")
 local clickable_container = require('widget.clickable-container')
 
 local barcontainer = require("widget.barcontainer")
@@ -41,6 +42,7 @@ local powerbutton = require("widget.power")
 
 
 awful.screen.connect_for_each_screen(function(screen)
+
     awful.tag(awful.util.tagnames, screen, awful.layout.layouts[1])
     screen.mypromptbox = awful.widget.prompt()
     local launcher = wibox.container.margin(launcher, dpi(0), dpi(0), dpi(4), dpi(4))
@@ -210,4 +212,18 @@ awful.screen.connect_for_each_screen(function(screen)
         shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius) end,
         widget = wibox.container.background,
     })
+
+    -- local widebox_timed = rubato.timed {
+    --     intro = 0.1,
+    --     duration = 0.3,
+    --     easing = rubato.bouncy,
+    --     subscribed = function(pos)
+    --         screen.wibar.x = pos - dpi(95)
+    --     end
+    -- }
+
+    -- mem_widget:connect_signal("button::press", function()
+    --     widebox_timed.target = dpi(125)
+    --     screen.wibar.x = dpi(30)
+    -- end)
 end)

@@ -7,7 +7,9 @@ M.init = function(theme, titlebar_theme)
     local tip                = titlebar_icon_path
 
     theme.titlebar_close_button_normal = tip .. "close_normal.svg"
+    theme.titlebar_close_button_normal_hover = tip .. "close_normal_hover.svg"
     theme.titlebar_close_button_focus  = tip .. "close_focus.svg"
+    theme.titlebar_close_button_focus_hover  = tip .. "close_focus_hover.svg"
 
     theme.titlebar_minimize_button_normal = tip .. "minimize_normal.svg"
     theme.titlebar_minimize_button_focus  = tip .. "minimize_focus.svg"
@@ -31,9 +33,6 @@ M.init = function(theme, titlebar_theme)
     theme.titlebar_maximized_button_focus_inactive  = tip .. "maximized_focus_inactive.svg"
     theme.titlebar_maximized_button_normal_active   = tip .. "maximized_normal_active.svg"
     theme.titlebar_maximized_button_focus_active    = tip .. "maximized_focus_active.svg"
-
-    theme.titlebar_close_button_normal_hover = tip .. "close_normal_hover.svg"
-    theme.titlebar_close_button_focus_hover  = tip .. "close_focus_hover.svg"
 
     theme.titlebar_minimize_button_normal_hover = tip .. "minimize_normal_hover.svg"
     theme.titlebar_minimize_button_focus_hover  = tip .. "minimize_focus_hover.svg"

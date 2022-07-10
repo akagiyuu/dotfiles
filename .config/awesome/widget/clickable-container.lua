@@ -1,13 +1,9 @@
---
--- clickable_container.lua
--- eyecandy effect when hovering over widgets
---
-
 local wibox = require('wibox')
 local beautiful = require("beautiful")
+local rubato = require("modules.rubato")
 
 -- create widget instance
-local create_widget = function (widget)
+local create_widget = function(widget)
   local old_cursor, old_wibox
 
   local container = wibox.widget {
@@ -22,8 +18,19 @@ local create_widget = function (widget)
     },
   }
 
+  local container_opacity = rubato.timed {
+    pos = 1,
+    rate = 60,
+    intro = 0.06,
+    duration = 0.2,
+    awestore_compat = true,
+    subscribed = function(pos)
+      container.opacity = pos
+    end
+  }
+
   container:connect_signal('mouse::enter', function()
-    container.bg = '#ffffff11'
+    container_opacity.target = 0.2
     local w = _G.mouse.current_wibox
     if w then
       old_cursor, old_wibox = w.cursor, w
@@ -31,17 +38,17 @@ local create_widget = function (widget)
     end
   end)
   container:connect_signal('mouse::leave', function()
-    container.bg = '#ffffff00'
+    container_opacity.target = 1
     if old_wibox then
       old_wibox.cursor = old_cursor
       old_wibox = nil
     end
   end)
   container:connect_signal('button::press', function()
-    container.bg = '#ffffff22'
+    container_opacity.target = 0.5
   end)
   container:connect_signal('button::release', function()
-    container.bg = '#ffffff11'
+    container_opacity.target = 0.2
   end)
 
   return container

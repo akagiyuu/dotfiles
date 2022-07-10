@@ -1,5 +1,6 @@
 local awful         = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local rubato        = require("modules.rubato")
 
 
 awful.keyboard.append_global_keybindings {
@@ -149,7 +150,19 @@ awful.keyboard.append_global_keybindings {
 
     awful.key(
         { Keys.mod, }, "l",
-        function() awful.tag.incmwfact(0.05) end,
+        function()
+            -- local widebox_timed = rubato.timed {
+            --     intro = 0.1,
+            --     rate = 10000,
+            --     duration = 0.2,
+            --     easing = rubato.bouncy,
+            --     subscribed = function(shift)
+            --         awful.tag.incmwfact(shift)
+            --     end
+            -- }
+            -- widebox_timed.target = 0.005
+            awful.tag.incmwfact(0.05)
+        end,
         { description = "increase master width factor", group = "layout" }
     ),
 

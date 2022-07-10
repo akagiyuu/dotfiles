@@ -33,6 +33,7 @@ widget_button:buttons(
 			nil,
 			function()
 				awesome.emit_signal('widget::systray:toggle')
+				awful.screen.focused().systray.x = dpi(100)
 			end
 		)
 	)

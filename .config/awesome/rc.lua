@@ -6,6 +6,6 @@ require("themes").init {
     accent = "ayu",
 }
 
-require("configuration")
 require("ui")
+require("configuration")
 require("modules")
