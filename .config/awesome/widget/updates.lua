@@ -12,7 +12,7 @@ local updates = wibox.widget.textbox()
 updates.font = beautiful.font
 --updates.markup
 
-watch('bash -c "pacman -Qu | grep -Fcv "[ignored]" | sed "s/^//;s/^0$//g""', 3600, function(_, stdout)
+watch('bash -c "checkupdates | wc -l"', 3600, function(_, stdout)
     updates.text = stdout
     collectgarbage('collect')
 end)

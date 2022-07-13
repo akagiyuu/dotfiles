@@ -19,8 +19,8 @@ local barcontainer = require("widget.barcontainer")
 -- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
 -- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
 -- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
--- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
-awful.util.tagnames = { "", "", "", "", "", "", "", "", "" }
+awful.util.tagnames = { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames = { "", "", "", "", "", "", "", "", "" }
 -- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
 -- awful.util.tagnames =  { "", "", "", "", "", "", "", "", ""}
 
@@ -28,7 +28,7 @@ awful.util.tagnames = { "", "", "", "", "", "", "", "", 
 -- awful.util.tagnames = {"●", "●", "●", "●", "●", "●", "●", "●", "●", "●"}
 -- awful.util.tagnames = {"", "", "", "", "", "", "", "", "", ""}
 -- awful.util.tagnames = {"•", "•", "•", "•", "•", "•", "•", "•", "•", "•"}
--- awful.util.tagnames = { "","", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames = { "", "", "", "", "", "", "", "", "", "" }
 -- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "",  "" }
 
 local clock_widget = require('widget.clock')
@@ -59,24 +59,7 @@ awful.screen.connect_for_each_screen(function(screen)
     }
     screen.layoutbox = wibox.container.margin(screen.layoutbox, dpi(7), dpi(7), dpi(7), dpi(7))
 
-    screen.taglist = awful.widget.taglist {
-        screen = screen,
-        filter = awful.widget.taglist.filter.all,
-        buttons = {
-            awful.button({}, 1, function(t) t:view_only() end),
-            awful.button({ Keys.mod }, 1, function(t)
-                if client.focus then
-                    client.focus:move_to_tag(t)
-                end
-            end),
-            awful.button({}, 3, awful.tag.viewtoggle),
-            awful.button({ Keys.mod }, 3, function(t)
-                if client.focus then
-                    client.focus:toggle_tag(t)
-                end
-            end),
-        },
-    }
+    screen.taglist = require("ui.bar.taglist")(screen)
 
     screen.tasklist = awful.widget.tasklist {
         screen = screen,
@@ -114,28 +97,19 @@ awful.screen.connect_for_each_screen(function(screen)
             layout = wibox.layout.flex.horizontal
         },
         widget_template = {
+            nil,
             {
-                {
-                    {
-                        {
-                            id = "clienticon",
-                            widget = awful.widget.clienticon,
-                        },
-                        margins = 6,
-                        widget = wibox.container.margin,
-                    },
-                    --{
-                    --	id     = "text_role",
-                    --	widget = wibox.widget.textbox,
-                    --},
-                    layout = wibox.layout.fixed.horizontal,
-                },
-                left = 5,
-                right = 5,
-                widget = wibox.container.margin
+                awful.widget.clienticon,
+                margins = 5,
+                widget  = wibox.container.margin
             },
-            id = "background_role",
-            widget = wibox.container.background,
+            {
+                wibox.widget.base.make_widget(),
+                forced_height = 5,
+                id            = "background_role",
+                widget        = wibox.container.background,
+            },
+            layout = wibox.layout.align.vertical,
         },
     }
 
@@ -170,15 +144,17 @@ awful.screen.connect_for_each_screen(function(screen)
         {
             {
                 layout = wibox.layout.align.horizontal,
+                expand = "none",
                 {
                     launcher,
                     screen.taglist,
+                    screen.tasklist,
                     spacing = dpi(10),
                     layout = wibox.layout.fixed.horizontal,
                 },
                 {
+                    barcontainer(clock_widget),
                     layout = wibox.layout.align.horizontal,
-                    screen.tasklist,
                 },
                 {
                     barcontainer(updates_widget),
@@ -187,7 +163,6 @@ awful.screen.connect_for_each_screen(function(screen)
                     barcontainer(mem_widget),
                     barcontainer(fs_widget),
                     -- barcontainer(keyboardlayout_widget),
-                    barcontainer(clock_widget),
                     {
                         screen.systray,
                         margins = dpi(4),

@@ -18,7 +18,7 @@ ruled.client.connect_signal("request::rules", function()
     ruled.client.append_rule {
         id         = "titlebars",
         rule_any   = { type = { "normal", "dialog" } },
-        properties = { titlebars_enabled = true }
+        properties = { titlebars_enabled = false }
     }
 
     ruled.client.append_rule {
@@ -54,7 +54,6 @@ ruled.client.connect_signal("request::rules", function()
         },
         properties = {
             fullscreen = true,
-            titlebars_enabled = false,
         }
     }
 end)
@@ -70,24 +69,24 @@ ruled.notification.connect_signal('request::rules', function()
     }
 end)
 
-local function rounded_corners(client)
-    client.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius)
-    end
-end
-
-local function squared_corners(client)
-    client.shape = gears.shape.rectangle
-end
-
-local function client_corner_handle(client)
-    if client.class ~= "mpv" and not client.fullscreen and not client.maximized then
-        rounded_corners(client)
-    else
-        squared_corners(client)
-    end
-end
-
-client.connect_signal("manage", function(c) client_corner_handle(c) end)
-client.connect_signal("property::fullscreen", function(c) client_corner_handle(c) end)
-client.connect_signal("property::maximized", function(c) client_corner_handle(c) end)
+-- local function rounded_corners(client)
+--     client.shape = function(cr, w, h)
+--         gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius)
+--     end
+-- end
+--
+-- local function squared_corners(client)
+--     client.shape = gears.shape.rectangle
+-- end
+--
+-- local function client_corner_handle(client)
+--     if client.class ~= "mpv" and not client.fullscreen and not client.maximized then
+--         rounded_corners(client)
+--     else
+--         squared_corners(client)
+--     end
+-- end
+--
+-- client.connect_signal("manage", function(c) client_corner_handle(c) end)
+-- client.connect_signal("property::fullscreen", function(c) client_corner_handle(c) end)
+-- client.connect_signal("property::maximized", function(c) client_corner_handle(c) end)

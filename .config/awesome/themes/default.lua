@@ -102,6 +102,8 @@ local default_theme = {
     flash_focus_start_opacity = 0.8,
     flash_focus_step          = 0.01,
 }
+
+default_theme.window_switcher_widget_bg = '#00000000'
 default_theme.window_switcher_widget_border_color = default_theme.border_focus
 default_theme.window_switcher_name_font = default_theme.font
 default_theme.window_switcher_name_normal_color = default_theme.fg_normal

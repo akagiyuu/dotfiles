@@ -1,23 +1,11 @@
 #!/usr/bin/env bash
 
-## rofi-screenshot
-## Author: ceuk @ github
-## Licence: WTFPL
-## Usage:
-##    show the menu with rofi-screenshot
-##    stop recording with rofi-screenshot -s
-
-# Screenshot directory
-screenshot_directory="$HOME/Pictures/Screenshots"
+ScriptDirectory=$HOME/Scripts
+ScreenshotDirectory=$HOME/Pictures/Screenshots
 
 # set ffmpeg defaults
 ffmpeg() {
     command ffmpeg -hide_banner -loglevel error -nostdin "$@"
-}
-
-video_to_gif() {
-    ffmpeg -i "$1" -vf palettegen -f image2 -c:v png - |
-    ffmpeg -i "$1" -i - -filter_complex paletteuse "$2"
 }
 
 countdown() {
@@ -29,65 +17,39 @@ countdown() {
   sleep 1
 }
 
-crtc() {
+screenshot_region_clipboard() {
   notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
-  ffcast -q "$(slop -n -f '-g %g ')" png /tmp/screenshot_clip.png
-  xclip -selection clipboard -t image/png /tmp/screenshot_clip.png
-  rm /tmp/screenshot_clip.png
+  eval "$ScriptDirectory/screenshot -o '-s'"
   notify-send --app-name="screenshot" "Screenshot" "Region copied to Clipboard"
 }
 
-crtf() {
+screenshot_region_file() {
   notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
-  dt=$(date '+%d-%m-%Y %H:%M:%S')
-  ffcast -q "$(slop -n -f '-g %g ')" png "$screenshot_directory/$dt.png"
-  notify-send --app-name="screenshot" "Screenshot" "Region saved to ${screenshot_directory//${HOME}/~}"
+  eval "$ScriptDirectory/screenshot -o '-s' $ScreenshotDirectory"
+  notify-send --app-name="screenshot" "Screenshot" "Region saved to ${ScreenshotDirectory//${HOME}/~}"
 }
 
-cstc() {
-  ffcast -q png /tmp/screenshot_clip.png
-  xclip -selection clipboard -t image/png /tmp/screenshot_clip.png
-  rm /tmp/screenshot_clip.png
+screenshot_clipboard() {
+  eval "$ScriptDirectory/screenshot" 
   notify-send --app-name="screenshot" "Screenshot" "Screenshot copied to Clipboard"
 }
 
-cstf() {
-  dt=$(date '+%d-%m-%Y %H:%M:%S')
-  ffcast -q png "$screenshot_directory/$dt.png"
-  notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
+screenshot_file() {
+  "$ScriptDirectory/screenshot $ScreenshotDirectory"
+  notify-send --app-name="screenshot" "Screenshot" "Saved to ${ScreenshotDirectory//${HOME}/~}"
 }
 
-rgrtf() {
-  notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
-  dt=$(date '+%d-%m-%Y %H:%M:%S')
-  ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec /tmp/screenshot_gif.mp4
-  notify-send --app-name="screenshot" "Screenshot" "Converting to gif… (can take a while)"
-  video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
-  rm /tmp/screenshot_gif.mp4
-  notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
-}
+# record_region() {
+#   # notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
+#   # time=$(date '+%d-%m-%Y %H:%M:%S')
+#   # "ffmpeg -f x11grab -i :0.0 $screenshot_directory/$time.mp4"
+#   # notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
+# }
 
-rgstf() {
+record_screen() {
   countdown
-  dt=$(date '+%d-%m-%Y %H:%M:%S')
-  ffcast -q rec /tmp/screenshot_gif.mp4
-  notify-send --app-name="screenshot" "Screenshot" "Converting to gif… (can take a while)"
-  video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
-  rm /tmp/screenshot_gif.mp4
-  notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
-}
-
-rvrtf() {
-  notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
-  dt=$(date '+%d-%m-%Y %H:%M:%S')
-  ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec "$screenshot_directory/$dt.mp4"
-  notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
-}
-
-rvstf() {
-  countdown
-  dt=$(date '+%d-%m-%Y %H:%M:%S')
-  ffcast -q rec "$screenshot_directory/$dt.mp4"
+  time=$(date '+%d-%m-%Y %H:%M:%S')
+  eval "ffmpeg -f x11grab -i :0.0 '$ScreenshotDirectory/$time.mp4'"
   notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
 }
 
@@ -96,10 +58,8 @@ get_options() {
   echo -e "  Region  File"
   echo -e "  Screen  Clip"
   echo -e "  Screen  File"
-  echo -e "  Region  File (GIF)"
-  echo -e "  Screen  File (GIF)"
-  echo -e "  Region  File (MP4)"
-  echo -e "  Screen  File (MP4)"
+  # echo -e "  Region  File (MP4)"
+  # echo -e "  Screen  File (MP4)"
 }
 
 check_deps() {
@@ -112,7 +72,6 @@ check_deps() {
 main() {
   # check dependencies
   check_deps slop
-  check_deps ffcast
   check_deps ffmpeg
   check_deps xclip
   check_deps rofi
@@ -147,29 +106,23 @@ main() {
   # run the selected command
   case $choice in
     '  Region  Clip')
-      crtc
+      screenshot_region_clipboard
       ;;
     '  Region  File')
-      crtf
+      screenshot_region_file
       ;;
     '  Screen  Clip')
-      cstc
+      screenshot_clipboard
       ;;
     '  Screen  File')
-      cstf
+      screenshot_file
       ;;
-    '  Region  File (GIF)')
-      rgrtf
-      ;;
-    '  Screen  File (GIF)')
-      rgstf
-      ;;
-    '  Region  File (MP4)')
-      rvrtf
-      ;;
-    '  Screen  File (MP4)')
-      rvstf
-      ;;
+    # '  Region  File (MP4)')
+    #   record_region
+    #   ;;
+    # '  Screen  File (MP4)')
+    #   record_screen
+    #   ;;
   esac
 
   # done

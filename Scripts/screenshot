@@ -1,2 +1,54 @@
 #!/bin/bash
-maim "$@" | xclip -selection clipboard -t image/png
+# maim "$@" | xclip -selection clipboard -t image/png
+# location='clipboard'
+# while getopts ":l:s" opt; do
+#   case ${opt} in
+#     location )
+#         if $OPTARG == 'file'
+#             location='file'
+#         fi
+#         ;;
+#     t ) # process option t
+#         echo "test"
+#       ;;
+#     \? ) echo "Usage: cmd [-h] [-t]"
+#       ;;
+#   esac
+# done
+#
+# echo $location
+
+location=clipboard
+option=''
+
+options=$(getopt -o o: -l options: -- "$@")
+[ $? -eq 0 ] || { 
+    echo "Incorrect options provided"
+    exit 1
+}
+eval set -- "$options"
+
+while true; do
+    case "$1" in
+    -o|--options)
+        shift
+        option=$1
+        ;;
+    --|-)
+        shift
+        break
+        ;;
+    esac
+    shift
+done
+
+command="maim $option" 
+
+location=$1
+time=$(date '+%H:%M:%S %d-%m-%Y')
+[[ -d "${location/\~/$HOME}" ]] && command="$command '$location/$time.png'" || command="$command | xclip -selection clipboard -t image/png"
+ 
+echo $command
+
+eval "$command"
+

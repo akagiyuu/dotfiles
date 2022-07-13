@@ -313,7 +313,7 @@ awful.keyboard.append_global_keybindings {
         { description = "Fullscreen", group = "Screenshot" }
     ),
     awful.key({ Keys.mod }, "Print",
-        function() awful.util.spawn("/home/yuu/Scripts/screenshot -s") end,
+        function() awful.util.spawn("/home/yuu/Scripts/screenshot -o '-s'") end,
         { description = "Area", group = "Screenshot" }
     ),
     awful.key({ Keys.mod, Keys.ctrl }, "Print",

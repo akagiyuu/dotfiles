@@ -76,7 +76,7 @@ local function worker(user_args)
         naughty.notify({
             preset = naughty.config.presets.critical,
             title = 'Calendar Widget',
-            text = 'Theme "' .. args.theme .. '" not found, fallback to default'})
+            text = 'Theme "' .. args.theme .. '" not found, fallback to default' })
         args.theme = 'naughty'
     end
 
@@ -188,22 +188,22 @@ local function worker(user_args)
 
 
     popup:buttons(
-            awful.util.table.join(
-                    awful.button({}, next_month_button, function()
-                        local a = cal:get_date()
-                        a.month = a.month + 1
-                        cal:set_date(nil)
-                        cal:set_date(a)
-                        popup:set_widget(cal)
-                    end),
-                    awful.button({}, previous_month_button, function()
-                        local a = cal:get_date()
-                        a.month = a.month - 1
-                        cal:set_date(nil)
-                        cal:set_date(a)
-                        popup:set_widget(cal)
-                    end)
-            )
+        awful.util.table.join(
+            awful.button({}, next_month_button, function()
+                local a = cal:get_date()
+                a.month = a.month + 1
+                cal:set_date(nil)
+                cal:set_date(a)
+                popup:set_widget(cal)
+            end),
+            awful.button({}, previous_month_button, function()
+                local a = cal:get_date()
+                a.month = a.month - 1
+                cal:set_date(nil)
+                cal:set_date(a)
+                popup:set_widget(cal)
+            end)
+        )
     )
 
     function calendar_widget.toggle()
@@ -216,7 +216,7 @@ local function worker(user_args)
             popup:set_widget(cal)
             popup.visible = not popup.visible
         else
-            awful.placement.top_right(popup, { margins = { top = 50, right = 110}, parent = awful.screen.focused() })
+            awful.placement.top(popup, { margins = { top = 50 }, parent = awful.screen.focused() })
             popup.visible = true
 
         end
