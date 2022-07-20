@@ -1,101 +1,65 @@
-return function(screen)
-    local awful = require("awful")
-    return awful.widget.taglist {
-        screen = screen,
-        filter = awful.widget.taglist.filter.all,
-        buttons = {
-            awful.button({}, 1, function(t) t:view_only() end),
-            awful.button({ Keys.mod }, 1, function(t)
-                if client.focus then
-                    client.focus:move_to_tag(t)
-                end
-            end),
-            awful.button({}, 3, awful.tag.viewtoggle),
-            awful.button({ Keys.mod }, 3, function(t)
-                if client.focus then
-                    client.focus:toggle_tag(t)
-                end
-            end),
+local awful = require("awful")
+local wibox = require("wibox")
+
+-- awful.util.tagnames =  { "1", "2" , "3", "4", "5", "6", "7", "8", "9" }
+-- awful.util.tagnames =  { "", " ", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "dev",  "www", "sys", "doc", "vbox", "chat", "mus", "vid", "gfx" }
+-- awful.util.tagnames =  { "", "", " ", "","", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
+awful.util.tagnames = { "", "󰈹", "󰌢", "", "󰇮", "", "", "" }
+-- awful.util.tagnames = { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", ""}
+
+-- Pacman Taglist :
+-- awful.util.tagnames = {"●", "●", "●", "●", "●", "●", "●", "●", "●", "●"}
+-- awful.util.tagnames = {"", "", "", "", "", "", "", "", "", ""}
+-- awful.util.tagnames = {"•", "•", "•", "•", "•", "•", "•", "•", "•", "•"}
+-- awful.util.tagnames = { "", "", "", "", "", "", "", "", "", "" }
+-- awful.util.tagnames =  { "", "", "", "", "", "", "", "", "",  "" }
+
+local taglist_options = {
+    filter = awful.widget.taglist.filter.all,
+    buttons = {
+        awful.button({}, 1, function(t) t:view_only() end),
+        awful.button({ mod }, 1, function(t) if client.focus then client.focus:move_to_tag(t) end end),
+        awful.button({}, 3, awful.tag.viewtoggle),
+        awful.button({ mod }, 3, function(t) if client.focus then client.focus:toggle_tag(t) end end),
+    },
+    widget_template = {
+        nil,
+        {
+            {
+                id     = 'text_role',
+                widget = wibox.widget.textbox,
+            },
+            right  = 5,
+            left   = 5,
+            widget = wibox.container.margin,
         },
-    }
+        create_callback = function(self, c3, _, _)
+            self:connect_signal('mouse::enter', function()
+                if #c3:clients() <= 0 then return end
+
+                awesome.emit_signal("bling::tag_preview::update", c3)
+                awesome.emit_signal("bling::tag_preview::visibility", screen, true)
+            end)
+            self:connect_signal('mouse::leave', function()
+                awesome.emit_signal("bling::tag_preview::visibility", screen, false)
+            end)
+        end,
+
+        layout = wibox.layout.align.vertical,
+    },
+    layout = wibox.layout.fixed.horizontal,
+}
+
+return function(screen)
+    awful.tag(awful.util.tagnames, screen, awful.layout.layouts[1])
+    taglist_options.screen = screen
+    return awful.widget.taglist(taglist_options)
 end
--- local awful = require("awful")
--- local gears = require("gears")
--- local gfs = gears.filesystem
--- local wibox = require("wibox")
--- local beautiful = require("beautiful")
--- local xresources = require("beautiful.xresources")
--- local dpi = xresources.apply_dpi
--- ------------------------------------
-
--- local get_taglist = function(s)
---     -- Taglist buttons
---     local taglist_buttons = gears.table.join(
---                                 awful.button({}, 1,
---                                              function(t) t:view_only() end),
---                                 awful.button({modkey}, 1, function(t)
---             if client.focus then client.focus:move_to_tag(t) end
---         end), awful.button({}, 3, awful.tag.viewtoggle),
---                                 awful.button({modkey}, 3, function(t)
---             if client.focus then client.focus:toggle_tag(t) end
---         end), awful.button({}, 4, function(t)
---             awful.tag.viewnext(t.screen)
---         end), awful.button({}, 5, function(t)
---             awful.tag.viewprev(t.screen)
---         end))
--- ----------------------------------------------------------------------
--- ----------------------------------------------------------------------
---     local tag = { "", "", "", "", "", "", "", "", "" }
---     local unfocus_icon = ""
---     local unfocus_color = "#C2CFDB"
-
---     local empty_icon = ""
---     local empty_color = "#4C6070"
-
---     local focus_icon =  ""
---     local focus_color = "#3ddb7f"
-
--- ----------------------------------------------------------------------
--- ----------------------------------------------------------------------
-
---     -- Function to update the tags
---     -- Function to update the tags
---     local update_tags = function(self, c3, index)
---         local tagicon = self:get_children_by_id('icon_role')[1]
---         if c3.selected then
---             tagicon.text = tag[index]
---             self.fg = focus_color
---         elseif #c3:clients() == 0 then
---             tagicon.text = empty_icon
---             self.fg = empty_color
---         else
---             tagicon.text = unfocus_icon
---             self.fg = unfocus_color
---         end
---     end
-
--- ----------------------------------------------------------------------
--- ----------------------------------------------------------------------
-
---     local icon_taglist = awful.widget.taglist {
---         screen = s,
---         filter = awful.widget.taglist.filter.all,
---         layout = {spacing = 0, layout = wibox.layout.fixed.horizontal},
---         widget_template = {
---             {id = 'icon_role', font = "Cascadia Code", widget = wibox.widget.textbox},
---             id = 'background_role',
---             widget = wibox.container.background,
---             create_callback = function(self, c3, index, objects)
---                 update_tags(self, c3,index)
---             end,
-
---             update_callback = function(self, c3, index, objects)
---                 update_tags(self, c3, index)
---             end
---         },
---         buttons = taglist_buttons
---     }
---     return icon_taglist
--- end
-
--- return get_taglist

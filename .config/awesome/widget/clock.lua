@@ -3,9 +3,8 @@ local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local clock = wibox.widget.textclock('<span font="' .. beautiful.font .. '">%a %d %b | %H:%M</span>')
---return clock
 local clock_icon = wibox.widget {
-    markup = '<span font="' .. beautiful.iconfont .. '"> </span>',
+    markup = '<span font="' .. beautiful.icon_font .. '"> </span>',
     widget = wibox.widget.textbox,
 }
 
@@ -24,17 +23,15 @@ local clock_widget = wibox.widget {
     layout = wibox.layout.fixed.horizontal
 }
 
-local calendar = require("widget.calendar")({
+local calendar = require("widget.calendar") {
     theme = 'dark',
     start_sunday = true,
     radius = beautiful.corner_radius,
     previous_month_button = 3,
     next_month_button = 1,
-})
-clock_widget:connect_signal("button::press",
-    function(_, _, _, button)
-        if button == 1 then calendar.toggle() end
-    end
-)
+}
+
+clock_widget:connect_signal("mouse::enter", function() calendar.show() end)
+
 
 return clock_widget

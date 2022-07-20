@@ -1,6 +1,9 @@
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
+local clickable_container = require('widget.clickable-container')
+local beautiful = require("beautiful")
+
 local create_button = function(name, icon, bg_color, callback)
     local item = wibox.widget {
         {
@@ -8,10 +11,6 @@ local create_button = function(name, icon, bg_color, callback)
                 {
                     {
                         {
-                            -- TODO: using gears.color to recolor a SVG will make it look super low res
-                            -- currently I recolor it in the .svg file directly, but later implement
-                            -- a better way to recolor a SVG
-                            -- image = gears.color.recolor_image(icon, color["Grey900"]),
                             image = icon,
                             resize = true,
                             forced_height = dpi(30),
@@ -23,7 +22,7 @@ local create_button = function(name, icon, bg_color, callback)
                     {
                         {
                             text = name,
-                            font = "Cascadia Code Bold 30",
+                            font = beautiful.font_name .. " Bold 30",
                             widget = wibox.widget.textbox
                         },
                         margins = dpi(0),
@@ -46,13 +45,10 @@ local create_button = function(name, icon, bg_color, callback)
         layout = wibox.layout.align.vertical
     }
 
-    item:connect_signal(
-        "button::release",
-        function()
-            callback()
-        end
-    )
+    item = clickable_container(item)
+    item:connect_signal( "button::release", function() callback() end)
 
     return item
 end
 return create_button
+

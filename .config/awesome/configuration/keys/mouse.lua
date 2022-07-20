@@ -5,10 +5,10 @@ client.connect_signal("request::default_mousebindings", function()
         awful.button({}, 1, function(c)
             c:activate { context = "mouse_click" }
         end),
-        awful.button({ Keys.mod }, 1, function(c)
+        awful.button({ mod }, 1, function(c)
             c:activate { context = "mouse_click", action = "mouse_move" }
         end),
-        awful.button({ Keys.mod, Keys.shift }, 1, function(c)
+        awful.button({ mod, "Shift" }, 1, function(c)
             c:activate { context = "mouse_click", action = "mouse_resize" }
         end),
     })

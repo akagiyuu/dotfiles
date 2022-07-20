@@ -1,27 +1,21 @@
 local awful = require("awful")
-local color = require("themes.colorschemes.extent")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
+local beautiful = require("beautiful")
 
-local hover_signal = require("util.signal").hover_signal
 local button = require("widget.button")
 
 local icondir = Paths.icon .. "powermenu/"
 
 local update_user_name = function(profile)
-    awful.spawn.easy_async_with_shell(
-        "./.config/awesome/scripts/uname.sh " .. "full",
-        function(stdout)
-            profile.picture:set_image(awful.util.getdir("config") .. "assets/avatars/" .. "rickastley.jpg")
-            profile.name:set_text(stdout)
-        end
-    )
+    awful.spawn.easy_async_with_shell("./.config/awesome/scripts/uname.sh full",
+        function(stdout) profile.name:set_text(stdout) end)
 end
 
 local profile = {
     picture = wibox.widget {
-        -- image = icondir .. "defaultpfp.svg",
+        image = Paths.config_directory .. "assets/profile.jpg",
         resize = true,
         forced_height = dpi(200),
         clip_shape = function(cr, width, height)
@@ -33,7 +27,7 @@ local profile = {
         align = 'center',
         valign = 'center',
         text = " ",
-        font = "Cascadia Code Italic 30",
+        font = beautiful.font_name .. " Italic 30",
         widget = wibox.widget.textbox
     }
 }
@@ -48,7 +42,7 @@ local logout_command = function()
 end
 
 local lock_command = function()
-    awful.spawn(Paths.home .."/Scripts/lock")
+    awful.spawn(Paths.home .. "/Scripts/lock")
     awesome.emit_signal("module::powermenu:hide")
 end
 
@@ -63,45 +57,26 @@ local reboot_command = function()
 end
 
 
-local shutdown_button = button("Shutdown", icondir .. "shutdown.svg", color["Blue200"], shutdown_command)
-local reboot_button = button("Reboot", icondir .. "reboot.svg", color["Red200"], reboot_command)
-local suspend_button = button("Suspend", icondir .. "suspend.svg", color["Yellow200"], suspend_command)
-local logout_button = button("Logout", icondir .. "logout.svg", color["Green200"], logout_command)
-local lock_button = button("Lock", icondir .. "lock.svg", color["Orange200"], lock_command)
-
-hover_signal(shutdown_button.background, color["Blue200"], color["Grey900"])
-hover_signal(reboot_button.background, color["Red200"], color["Grey900"])
-hover_signal(suspend_button.background, color["Yellow200"], color["Grey900"])
-hover_signal(logout_button.background, color["Green200"], color["Grey900"])
-hover_signal(lock_button.background, color["Orange200"], color["Grey900"])
+local shutdown_button = button("Shutdown", icondir .. "shutdown.svg", colors.blue, shutdown_command)
+local reboot_button = button("Reboot", icondir .. "reboot.svg", colors.red, reboot_command)
+local suspend_button = button("Suspend", icondir .. "suspend.svg", colors.yellow, suspend_command)
+local lock_button = button("Lock", icondir .. "lock.svg", colors.cyan, lock_command)
+local logout_button = button("Logout", icondir .. "logout.svg", colors.green, logout_command)
 
 local create_powermenu_screen = function(screen)
     update_user_name(profile)
 
     local powermenu = wibox.widget {
-        layout = wibox.layout.align.vertical,
-        expand = "none",
         nil,
         {
             {
                 nil,
                 {
                     {
-                        nil,
-                        {
-                            nil,
-                            {
-                                profile.picture,
-                                margins = dpi(0),
-                                widget = wibox.container.margin
-                            },
-                            nil,
-                            expand = "none",
-                            layout = wibox.layout.align.horizontal
-                        },
-                        nil,
-                        layout = wibox.layout.align.vertical,
-                        expand = "none"
+                        profile.picture,
+                        valign = "center",
+                        halign = "center",
+                        widget = wibox.container.place
                     },
                     spacing = dpi(50),
                     {
@@ -118,17 +93,13 @@ local create_powermenu_screen = function(screen)
             {
                 nil,
                 {
-                    {
-                        shutdown_button,
-                        reboot_button,
-                        logout_button,
-                        lock_button,
-                        suspend_button,
-                        spacing = dpi(30),
-                        layout = wibox.layout.fixed.horizontal
-                    },
-                    margins = dpi(0),
-                    widget = wibox.container.margin
+                    shutdown_button,
+                    reboot_button,
+                    logout_button,
+                    lock_button,
+                    suspend_button,
+                    spacing = dpi(30),
+                    layout = wibox.layout.fixed.horizontal
                 },
                 nil,
                 expand = "none",
@@ -136,9 +107,10 @@ local create_powermenu_screen = function(screen)
             },
             layout = wibox.layout.align.vertical
         },
-        nil
+        nil,
+        layout = wibox.layout.align.vertical,
+        expand = "none",
     }
-    -- Covers the entire screen
     local powermenu_container = wibox {
         widget = powermenu,
         screen = screen,
@@ -153,43 +125,25 @@ local create_powermenu_screen = function(screen)
     }
 
 
-    -- Close on Escape
     local powermenu_keygrabber = awful.keygrabber {
         autostart = false,
         stop_event = 'release',
-        keypressed_callback = function(self, mod, key, command)
-            if key == 'Escape' then
-                awesome.emit_signal("module::powermenu:hide")
-            end
+        keypressed_callback = function(_, _, key, _)
+            if key == 'Escape' then awesome.emit_signal("module::powermenu:hide") end
         end
     }
 
+    awesome.connect_signal("module::powermenu:show", function()
+        if screen ~= mouse.screen then return end
 
-    -- Close on rightclick
-    powermenu_container:buttons(gears.table.join(
-        awful.button(
-            {}, 3,
-            function() awesome.emit_signal("module::powermenu:hide") end
-        )
-    ))
+        powermenu_container.visible = true
+        powermenu_keygrabber:start()
+    end)
 
-    awesome.connect_signal(
-        "module::powermenu:show",
-        function()
-            if screen == mouse.screen then
-                powermenu_container.visible = true
-                powermenu_keygrabber:start()
-            end
-        end
-    )
-
-    awesome.connect_signal(
-        "module::powermenu:hide",
-        function()
-            powermenu_keygrabber:stop()
-            powermenu_container.visible = false
-        end
-    )
+    awesome.connect_signal("module::powermenu:hide", function()
+        powermenu_container.visible = false
+        powermenu_keygrabber:stop()
+    end)
 end
 
 return create_powermenu_screen

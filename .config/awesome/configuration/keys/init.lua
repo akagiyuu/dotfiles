@@ -1,9 +1,4 @@
-Keys = {
-    mod   = "Mod4",
-    shift = "Shift",
-    ctrl  = "Control",
-    alt   = "Mod1"
-}
+mod = "Mod4"
 
 require(... .. ".mouse")
 require(... .. ".keyboard")

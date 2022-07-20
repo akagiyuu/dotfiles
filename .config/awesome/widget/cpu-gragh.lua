@@ -1,13 +1,3 @@
--------------------------------------------------
--- CPU Widget for Awesome Window Manager
--- Shows the current CPU utilization
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/cpu-widget
-
--- @author Pavel Makhov
--- @copyright 2020 Pavel Makhov
--------------------------------------------------
-
 local awful = require("awful")
 local watch = require("awful.widget.watch")
 local wibox = require("wibox")
@@ -90,7 +80,7 @@ local function create_kill_process_button()
     }
 end
 
-local function worker(user_args)
+local function init(user_args)
 
     local args = user_args or {}
 
@@ -117,42 +107,29 @@ local function worker(user_args)
     -- It is stopped when the popup is closed and only the slim command is run then.
     -- This greatly improves performance while the popup is closed at the small cost
     -- of a slightly longer popup opening time.
-    local popup_timer = gears.timer {
-        timeout = timeout
-    }
+    local popup_timer = gears.timer { timeout = timeout }
 
     local popup = awful.popup {
         ontop = true,
         visible = false,
-        shape = gears.shape.rounded_rect,
         border_width = 1,
         border_color = beautiful.bg_normal,
         maximum_width = 300,
         offset = { y = 5 },
+        bg = beautiful.bg_urgent,
+        opacity = 0.8,
         widget = {}
     }
 
-    -- Do not update process rows when mouse cursor is over the widget
-    popup:connect_signal("mouse::enter", function() is_update = false end)
-    popup:connect_signal("mouse::leave", function() is_update = true end)
-
-    cpugraph_widget:buttons(
-        awful.util.table.join(
-            awful.button({}, 1, function()
-                if popup.visible then
-                    popup.visible = not popup.visible
-                    -- When the popup is not visible, stop the timer
-                    popup_timer:stop()
-                else
-                    popup:move_next_to(mouse.current_widget_geometry)
-                    -- Restart the timer, when the popup becomes visible
-                    -- Emit the signal to start the timer directly and not wait the timeout first
-                    popup_timer:start()
-                    popup_timer:emit_signal("timeout")
-                end
-            end)
-        )
-    )
+    cpugraph_widget:connect_signal("mouse::enter", function()
+        popup:move_next_to(mouse.current_widget_geometry)
+        popup_timer:start()
+        popup_timer:emit_signal("timeout")
+    end)
+    cpugraph_widget:connect_signal("mouse::leave", function()
+        popup.visible = false
+        popup_timer:stop()
+    end)
 
     --- By default graph widget goes from left to right, so we mirror it and push up a bit
     cpu_widget = wibox.widget {
@@ -170,9 +147,7 @@ local function worker(user_args)
     -- It updates the graph widget in the bar.
     local maincpu = {}
     watch(CMD_slim, timeout, function(widget, stdout)
-
-        local _, user, nice, system, idle, iowait, irq, softirq, steal, _, _ =
-        stdout:match('(%w+)%s+(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)')
+        local _, user, nice, system, idle, iowait, irq, softirq, steal, _, _ = stdout:match('(%w+)%s+(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)')
 
         local total = user + nice + system + idle + iowait + irq + softirq + steal
 
@@ -184,9 +159,7 @@ local function worker(user_args)
         maincpu['idle_prev'] = idle
 
         widget:add_value(diff_usage)
-    end,
-        cpugraph_widget
-    )
+    end, cpugraph_widget)
 
     -- This part runs whenever the timer is fired.
     -- It therefore only runs when the popup is open.
@@ -238,75 +211,75 @@ local function worker(user_args)
                     cpu_rows[i] = row
                     i = i + 1
                 else
-                    if is_update == true then
+                    -- if is_update == true then
 
-                        local columns = split(line, '|')
+                    local columns = split(line, '|')
 
-                        local pid = columns[1]
-                        local comm = columns[2]
-                        local cpu = columns[3]
-                        local mem = columns[4]
-                        local cmd = columns[5]
+                    local pid = columns[1]
+                    local comm = columns[2]
+                    local cpu = columns[3]
+                    local mem = columns[4]
+                    local cmd = columns[5]
 
-                        local kill_proccess_button = enable_kill_button and create_kill_process_button() or nil
+                    local kill_proccess_button = enable_kill_button and create_kill_process_button() or nil
 
-                        local pid_name_rest = wibox.widget {
-                            create_textbox { text = pid },
-                            create_textbox { text = comm },
-                            {
-                                create_textbox { text = cpu, align = 'center' },
-                                create_textbox { text = mem, align = 'center' },
-                                kill_proccess_button,
-                                layout = wibox.layout.fixed.horizontal
-                            },
-                            layout = wibox.layout.ratio.horizontal
-                        }
-                        pid_name_rest:ajust_ratio(2, 0.2, 0.47, 0.33)
+                    local pid_name_rest = wibox.widget {
+                        create_textbox { text = pid },
+                        create_textbox { text = comm },
+                        {
+                            create_textbox { text = cpu, align = 'center' },
+                            create_textbox { text = mem, align = 'center' },
+                            kill_proccess_button,
+                            layout = wibox.layout.fixed.horizontal
+                        },
+                        layout = wibox.layout.ratio.horizontal
+                    }
+                    pid_name_rest:ajust_ratio(2, 0.2, 0.47, 0.33)
 
-                        local row = wibox.widget {
-                            {
-                                pid_name_rest,
-                                top = 4,
-                                bottom = 4,
-                                widget = wibox.container.margin
-                            },
-                            widget = wibox.container.background
-                        }
+                    local row = wibox.widget {
+                        {
+                            pid_name_rest,
+                            top = 4,
+                            bottom = 4,
+                            widget = wibox.container.margin
+                        },
+                        widget = wibox.container.background
+                    }
 
-                        row:connect_signal("mouse::enter", function(c) c:set_bg(beautiful.bg_focus) end)
-                        row:connect_signal("mouse::leave", function(c) c:set_bg(beautiful.bg_normal) end)
+                    row:connect_signal("mouse::enter", function(c) c:set_bg(beautiful.bg_focus) end)
+                    row:connect_signal("mouse::leave", function(c) c:set_bg(beautiful.bg_normal) end)
 
-                        if enable_kill_button then
-                            row:connect_signal("mouse::enter", function() kill_proccess_button.icon.opacity = 1 end)
-                            row:connect_signal("mouse::leave", function() kill_proccess_button.icon.opacity = 0.1 end)
+                    if enable_kill_button then
+                        row:connect_signal("mouse::enter", function() kill_proccess_button.icon.opacity = 1 end)
+                        row:connect_signal("mouse::leave", function() kill_proccess_button.icon.opacity = 0.1 end)
 
-                            kill_proccess_button:buttons(
-                                awful.util.table.join(awful.button({}, 1, function()
-                                    row:set_bg('#ff0000')
-                                    awful.spawn.with_shell('kill -9 ' .. pid)
-                                end)))
-                        end
-
-                        awful.tooltip {
-                            objects = { row },
-                            mode = 'outside',
-                            preferred_positions = { 'bottom' },
-                            timer_function = function()
-                                local text = cmd
-                                if process_info_max_length > 0 and text:len() > process_info_max_length then
-                                    text = text:sub(0, process_info_max_length - 3) .. '...'
-                                end
-
-                                return text
-                                    :gsub('%s%-', '\n\t-')-- put arguments on a new line
-                                    :gsub(':/', '\n\t\t:/') -- java classpath uses : to separate jars
-                            end,
-                        }
-
-                        process_rows[j] = row
-
-                        j = j + 1
+                        kill_proccess_button:buttons(
+                            awful.util.table.join(awful.button({}, 1, function()
+                                row:set_bg('#ff0000')
+                                awful.spawn.with_shell('kill -9 ' .. pid)
+                            end)))
                     end
+
+                    awful.tooltip {
+                        objects = { row },
+                        mode = 'outside',
+                        preferred_positions = { 'bottom' },
+                        timer_function = function()
+                            local text = cmd
+                            if process_info_max_length > 0 and text:len() > process_info_max_length then
+                                text = text:sub(0, process_info_max_length - 3) .. '...'
+                            end
+
+                            return text
+                                :gsub('%s%-', '\n\t-')-- put arguments on a new line
+                                :gsub(':/', '\n\t\t:/') -- java classpath uses : to separate jars
+                        end,
+                    }
+
+                    process_rows[j] = row
+
+                    j = j + 1
+                    -- end
 
                 end
             end
@@ -333,5 +306,5 @@ local function worker(user_args)
 end
 
 return setmetatable(cpu_widget, { __call = function(_, ...)
-    return worker(...)
+    return init(...)
 end })

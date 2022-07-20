@@ -19,7 +19,7 @@ end)
 
 --return updates
 local updates_icon = wibox.widget {
-	markup = '<span font="' .. beautiful.iconfont .. '"> </span>',
+	markup = '<span font="' .. beautiful.icon_font .. '"> </span>',
     align  = "center",
     valign = "center",
 	widget = wibox.widget.textbox,

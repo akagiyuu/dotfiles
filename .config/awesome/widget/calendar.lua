@@ -7,7 +7,7 @@ local naughty = require("naughty")
 local calendar_widget = {}
 local calendar_themes = {
     nord = {
-        bg = '#2E3440',
+        bg = '#2E344000',
         fg = '#D8DEE9',
         focus_date_bg = '#88C0D0',
         focus_date_fg = '#000000',
@@ -17,7 +17,7 @@ local calendar_themes = {
         border = '#4C566A'
     },
     outrun = {
-        bg = '#0d0221',
+        bg = '#0d022100',
         fg = '#D8DEE9',
         focus_date_bg = '#650d89',
         focus_date_fg = '#2de6e2',
@@ -27,7 +27,7 @@ local calendar_themes = {
         border = '#261447'
     },
     dark = {
-        bg = '#000000',
+        bg = '#00000000',
         fg = '#ffffff',
         focus_date_bg = '#ffffff',
         focus_date_fg = '#000000',
@@ -73,10 +73,10 @@ local function worker(user_args)
     local args = user_args or {}
 
     if args.theme ~= nil and calendar_themes[args.theme] == nil then
-        naughty.notify({
+        naughty.notify {
             preset = naughty.config.presets.critical,
             title = 'Calendar Widget',
-            text = 'Theme "' .. args.theme .. '" not found, fallback to default' })
+            text = 'Theme "' .. args.theme .. '" not found, fallback to default' }
         args.theme = 'naughty'
     end
 
@@ -183,6 +183,7 @@ local function worker(user_args)
         offset = { y = 5 },
         border_width = 1,
         border_color = calendar_themes[theme].border,
+        opacity = 0.5,
         widget = cal
     }
 
@@ -205,21 +206,25 @@ local function worker(user_args)
             end)
         )
     )
-
-    function calendar_widget.toggle()
-
-        if popup.visible then
-            -- to faster render the calendar refresh it and just hide
+    local hide_calendar = gears.timer {
+        timeout = 1,
+        single_shot = true,
+        callback = function()
             cal:set_date(nil) -- the new date is not set without removing the old one
             cal:set_date(os.date('*t'))
             popup:set_widget(nil) -- just in case
             popup:set_widget(cal)
-            popup.visible = not popup.visible
-        else
-            awful.placement.top(popup, { margins = { top = 50 }, parent = awful.screen.focused() })
-            popup.visible = true
-
+            popup.visible = false
         end
+    }
+    popup:connect_signal("mouse::enter", function() hide_calendar:stop() end)
+    popup:connect_signal("mouse::leave", function() hide_calendar:again() end)
+    function calendar_widget.show()
+        awful.placement.top(popup, { margins = { top = 50 }, parent = awful.screen.focused() })
+        popup.visible = true
+
+        hide_calendar:start()
+
     end
 
     return calendar_widget

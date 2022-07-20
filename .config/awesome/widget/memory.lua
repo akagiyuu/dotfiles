@@ -1,8 +1,3 @@
--- ## Memory ##
--- ~~~~~~~~~
-
--- requirements
--- ~~~~~~~~~~~~
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 local watch = require('awful.widget.watch')
@@ -27,15 +22,15 @@ end)
 
 --return memory
 local memory_icon = wibox.widget {
-	markup = '<span font="' .. beautiful.iconfont .. '"> </span>',
-	widget = wibox.widget.textbox,
+    markup = '<span font="' .. beautiful.icon_font .. '">󰍛 </span>',
+    widget = wibox.widget.textbox,
 }
 return wibox.widget {
-	wibox.widget{
-		memory_icon,
-		fg = colors.brightgreen,
-		widget = wibox.container.background
-	},
+    wibox.widget{
+        memory_icon,
+        fg = colors.brightgreen,
+        widget = wibox.container.background
+    },
     wibox.widget{
         memory,
         fg = colors.brightgreen,

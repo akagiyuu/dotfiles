@@ -12,7 +12,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 local keyboardlayout = awful.widget.keyboardlayout()
 keyboardlayout.widget.font = beautiful.font
 local keyboard_icon = wibox.widget {
-	markup = '<span font="' .. beautiful.iconfont .. '"></span>',
+	markup = '<span font="' .. beautiful.icon_font .. '"></span>',
 	widget = wibox.widget.textbox,
 }
 

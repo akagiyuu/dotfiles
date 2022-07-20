@@ -1,13 +1,13 @@
 [Default Applications]
-text/plain=nvim.desktop
-text/html=chromium.desktop
+text/plain=neovide.desktop
+text/html=firefox.desktop
 image/png=feh.desktop
 image/jpeg=feh.desktop
 image/gif=feh.desktop
-x-scheme-handler/http=chromium.desktop
-x-scheme-handler/https=chromium.desktop
-x-scheme-handler/about=chromium.desktop
-x-scheme-handler/unknown=chromium.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
 inode/directory=thunar.desktop
 
 [Added Associations]

@@ -8,17 +8,19 @@ local others_icon_path = Paths.icon .. "others/"
 local oip              = others_icon_path
 
 local default_theme = {
+    font_name            = "Cascadia Code",
+    icon_font            = "Material Icon Design",
     font                 = "Cascadia Code Italic 10",
-    taglist_font         = "Font Awesome 6 Free Solid 11",
-    iconfont             = "Font Awesome 6 Free Solid 10",
+    taglist_font         = "Material Icon Design 12",
     bg_normal            = colors.brightblack,
     bg_focus             = colors.brightblack,
     bg_urgent            = colors.black,
     bg_minimize          = colors.black,
     bg_systray           = colors.black,
     systray_icon_spacing = dpi(4),
+    wallpaper            = Paths.config_directory .. "assets/wallpaper.jpg",
+    profile_picture      = Paths.config_directory .. "assets/profile.jpg",
 
-    -- Taglist:
     taglist_spacing   = dpi(2),
     taglist_bg_focus  = colors.black,
     -- taglist_fg_focus  = colors.blue,
@@ -26,12 +28,11 @@ local default_theme = {
     taglist_bg_empty  = colors.black,
     taglist_fg_urgent = colors.green,
 
-    fg_normal         = colors.white,
+    fg_normal   = colors.white,
     -- fg_focus          = colors.blue,
-    fg_urgent         = colors.brightred,
-    fg_minimize       = colors.brightblack,
+    fg_urgent   = colors.brightred,
+    fg_minimize = colors.brightblack,
 
-    -- Clients:
     useless_gap       = dpi(5),
     border_width      = dpi(2),
     gap_single_client = false,
@@ -40,17 +41,18 @@ local default_theme = {
     -- border_marked     = colors.blue,
     corner_radius     = dpi(5),
 
-    -- Tasklist:
-    tasklist_bg_normal         = colors.black,
-    tasklist_bg_focus          = colors.black,
+    hotkeys_bg           = colors.black .. '33',
+    hotkeys_modifiers_fg = colors.blue,
+    tasklist_bg_normal   = colors.black,
+
+    tasklist_bg_focus          = colors.blue,
     tasklist_bg_urgent         = colors.green,
     tasklist_plain_task_name   = true,
     tasklist_disable_task_name = false,
     tasklist_disable_icon      = true,
 
-    -- Notifications:
     notification_position             = "top_right",
-    notification_bg                   = colors.black,
+    notification_bg                   = colors.black .. '00',
     notification_margin               = dpi(10),
     notification_border_width         = dpi(10),
     -- notification_border_color         = colors.blue,
@@ -58,7 +60,6 @@ local default_theme = {
     notification_icon_resize_strategy = "center",
     notification_icon_size            = dpi(32),
 
-    -- Menu:
     menu_submenu_icon = oip .. "forward.png",
     menu_bg_normal    = colors.black,
     menu_bg_focus     = colors.black,
@@ -67,7 +68,6 @@ local default_theme = {
     menu_height       = dpi(20),
     menu_width        = dpi(170),
 
-    -- theme.awesome_icon = theme_assets.awesome_icon(dpi(70), theme.fg_focus, theme.bg_focus)
     awesome_icon = Paths.icon .. "arch/archlinux.png",
     icon_theme   = "/usr/share/icons/Papirus-Dark/16x16/apps",
 
@@ -77,7 +77,6 @@ local default_theme = {
     titlebar_bg_normal = colors.black,
     -- titlebar_fg_focus  = colors.blue,
 
-    -- Layoutbox icons :
     layout_fairh      = lip .. "fairh.png",
     layout_fairv      = lip .. "fairv.png",
     layout_floating   = lip .. "floating.png",
@@ -95,10 +94,8 @@ local default_theme = {
     layout_cornersw   = lip .. "cornersw.png",
     layout_cornerse   = lip .. "cornerse.png",
 
-    -- Powermenu
     powermenu_fg_normal = colors.black,
 
-    -- Bling
     flash_focus_start_opacity = 0.8,
     flash_focus_step          = 0.01,
 }

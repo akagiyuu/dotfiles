@@ -92,7 +92,6 @@ local function worker(user_args)
         bg = _config.popup_bg,
         ontop = true,
         visible = false,
-        shape = gears.shape.rounded_rect,
         border_width = _config.popup_border_width,
         border_color = _config.popup_border_color,
         maximum_width = 400,
@@ -100,19 +99,11 @@ local function worker(user_args)
         widget = {}
     }
 
-    storage_bar_widget:buttons(
-        awful.util.table.join(
-            awful.button({}, 1, function()
-                if popup.visible then
-                    popup.visible = not popup.visible
-                    storage_bar_widget:set_bg(colors.transparent)
-                else
-                    storage_bar_widget:set_bg(_config.widget_background_color)
-                    popup:move_next_to(mouse.current_widget_geometry)
-                end
-            end)
-        )
-    )
+    storage_bar_widget:connect_signal("mouse::enter", function()
+        popup:move_next_to(mouse.current_widget_geometry)
+        popup.visible = true
+    end)
+    storage_bar_widget:connect_signal("mouse::leave", function() popup.visible = false end)
 
     local disks = {}
     watch([[bash -c "df | tail -n +2"]], _config.refresh_rate,

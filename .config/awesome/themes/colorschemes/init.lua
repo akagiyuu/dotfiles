@@ -21,10 +21,9 @@ M.init = function(theme)
         brightmagenta = color_palette[14],
         brightcyan    = color_palette[15],
         brightwhite   = color_palette[16],
-
         container     = color_palette[17],
-        transparent   = "#00000000",
     }
+    _G.colors.transparent   = "#00000000"
 end
 
 ---Generate focus related color

@@ -17,7 +17,7 @@ end)
 
 --return temprature
 local temprature_icon = wibox.widget {
-	markup = '<span font="' .. beautiful.iconfont .. '"> </span>',
+	markup = '<span font="' .. beautiful.icon_font .. '"> </span>',
 	widget = wibox.widget.textbox,
 }
 return wibox.widget {
