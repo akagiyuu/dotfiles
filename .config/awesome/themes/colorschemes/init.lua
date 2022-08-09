@@ -24,6 +24,10 @@ M.init = function(theme)
         container     = color_palette[17],
     }
     _G.colors.transparent   = "#00000000"
+
+    _G.colors.random = function ()
+        return color_palette[math.random(1, #color_palette)]
+    end
 end
 
 ---Generate focus related color

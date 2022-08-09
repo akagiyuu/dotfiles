@@ -1,4 +1,4 @@
-require(... .. ".titlebar")
+-- require(... .. ".titlebar")
 require(... .. ".menu")
 require(... .. ".bar")
 require(... .. ".volume")

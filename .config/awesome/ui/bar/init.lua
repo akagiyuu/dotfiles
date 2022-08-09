@@ -5,16 +5,17 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
-local barcontainer = require("widget.barcontainer")
-local clock_widget = require('widget.clock')
-local mem_widget = require('widget.memory')
-local cpu_widget = require('widget.cpu-gragh') {}
-local temprature_widget = require('widget.temprature')
-local updates_widget = require('widget.updates')
-local fs_widget = require('widget.fs-widget') { mounts = { '/', '/home' } }
-local powerbutton = require('widget.power')
-local network = require('widget.net_speed') {}
-local quake = require('modules.quake')
+local barcontainer      = require("widget.barcontainer")
+local clock_widget      = require('widget.clock')
+local temprature_widget = barcontainer(require 'widget.temprature')
+local mem_widget        = barcontainer(require 'widget.memory')
+local cpu_widget        = barcontainer(require 'widget.cpu-gragh'())
+local updates_widget    = barcontainer(require 'widget.updates')
+local fs_widget         = barcontainer(require 'widget.fs-widget' { mounts = { '/', '/home' } })
+local network           = barcontainer(require 'widget.net_speed' {})
+local volume            = barcontainer(require 'widget.volume')
+local powerbutton       = require('widget.power')
+local quake             = require('modules.quake')
 
 
 awful.screen.connect_for_each_screen(function(screen)
@@ -97,15 +98,16 @@ awful.screen.connect_for_each_screen(function(screen)
             {
                 {
                     {
-                        barcontainer(updates_widget),
+                        updates_widget,
                         left = 15,
                         widget = wibox.container.margin
                     },
-                    barcontainer(cpu_widget),
-                    barcontainer(mem_widget),
-                    barcontainer(fs_widget),
-                    barcontainer(network),
-                    barcontainer(temprature_widget),
+                    cpu_widget,
+                    mem_widget,
+                    volume,
+                    network,
+                    fs_widget,
+                    temprature_widget,
                     screen.systray,
                     screen.layoutbox,
                     {

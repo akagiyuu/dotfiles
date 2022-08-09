@@ -6,7 +6,7 @@ local ctrl          = "Control"
 local alt           = "Mod2"
 
 awful.keyboard.append_global_keybindings {
-    awful.key({ mod }, "z", function() awful.screen.focused().quake:toggle() end),
+
     awful.key({ mod }, "s", hotkeys_popup.show_help, {
         description = "show help", group = "awesome"
     }),
@@ -25,7 +25,7 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod }, "Return", function() awful.spawn(Terminal) end, {
         description = "open a terminal", group = "launcher"
     }),
-    awful.key({ ctrl, shift }, "r", function() awful.spawn("xdotool click 3") end, {
+    awful.key({}, "Menu", function() awful.spawn("xdotool click 3") end, {
         description = "Right click", group = "launcher"
     }),
     awful.key({ mod }, "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, {
@@ -37,6 +37,9 @@ awful.keyboard.append_global_keybindings {
     }),
     awful.key({ mod }, "d", function() awesome.emit_signal("dashboard::toggle") end, {
         description = "Dashboard", group = "launcher"
+    }),
+    awful.key({ mod }, "`", function() awful.screen.focused().quake:toggle() end, {
+        description = 'Quake terminal', group = 'launcher'
     }),
 }
 
@@ -51,12 +54,6 @@ awful.keyboard.append_global_keybindings {
 }
 
 awful.keyboard.append_global_keybindings {
-    awful.key({ mod, }, "j", function() awful.client.focus.byidx(1) end, {
-        description = "focus next by index", group = "client"
-    }),
-    awful.key({ mod, }, "k", function() awful.client.focus.byidx(-1) end, {
-        description = "focus previous by index", group = "client"
-    }),
     awful.key({ mod, ctrl }, "j", function() awful.screen.focus_relative(1) end, {
         description = "focus the next screen", group = "screen"
     }),
@@ -83,24 +80,25 @@ awful.keyboard.append_global_keybindings {
         description = "swap with previous client by index", group = "client"
     }),
 
-    awful.key({ mod, }, "l", function() awful.tag.incmwfact(1.05) end, {
+    awful.key({ mod, }, "j", function() awful.client.focus.byidx(1) end, {
+        description = "focus next by index", group = "client"
+    }),
+    awful.key({ mod, }, "k", function() awful.client.focus.byidx(-1) end, {
+        description = "focus previous by index", group = "client"
+    }),
+    awful.key({ mod, }, "l", function() awful.tag.incmwfact(0.05) end, {
         description = "increase master width factor", group = "layout"
     }),
 
-    awful.key({ mod, }, "h", function() awful.tag.incmwfact(1.05) end, {
+    awful.key({ mod, }, "h", function() awful.tag.incmwfact(-0.05) end, {
         description = "decrease master width factor", group = "layout"
     }),
-    awful.key({ mod, ctrl }, "h", function() awful.tag.incncol(2, nil, true) end, {
-        description = "increase the number of columns", group = "layout"
-    }),
-    awful.key({ mod, ctrl }, "l", function() awful.tag.incncol(0, nil, true) end, {
-        description = "decrease the number of columns", group = "layout"
-    }),
 
-    awful.key({ mod, }, "space", function() awful.layout.inc(2) end, {
+
+    awful.key({ mod, }, "space", function() awful.layout.inc(1) end, {
         description = "select next", group = "layout"
     }),
-    awful.key({ mod, shift }, "space", function() awful.layout.inc(0) end, {
+    awful.key({ mod, shift }, "space", function() awful.layout.inc(-1) end, {
         description = "select previous", group = "layout"
     }),
 }
@@ -187,7 +185,7 @@ awful.keyboard.append_global_keybindings {
         description = "Apps", group = "launcher"
     }),
 
-    awful.key({ mod }, "b", function() awful.spawn(string.format("chromium")) end, {
+    awful.key({ mod }, "b", function() awful.spawn(string.format("firefox")) end, {
         description = "Browser", group = "launcher"
     }),
 

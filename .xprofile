@@ -21,3 +21,5 @@ ibus-daemon -drx
 
 xset s 300
 xss-lock ~/Scripts/lock &
+
+numlockx &
