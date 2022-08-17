@@ -10,3 +10,9 @@
 [submodule ".config/awesome/modules/color"]
 	path = .config/awesome/modules/color
 	url = https://github.com/andOrlando/color
+[submodule ".config/awesome/modules/collision"]
+	path = .config/awesome/modules/collision
+	url = https://github.com/manos00/collision
+[submodule ".config/awesome/collision"]
+	path = .config/awesome/collision
+	url = https://github.com/manos00/collision

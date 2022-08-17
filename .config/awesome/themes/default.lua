@@ -1,5 +1,6 @@
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local gears = require('gears')
 
 local layout_icon_path = Paths.icon .. "layouts/"
 local lip              = layout_icon_path
@@ -98,6 +99,13 @@ local default_theme = {
 
     flash_focus_start_opacity = 0.8,
     flash_focus_step          = 0.01,
+
+    -- collision_focus_bg_center = colors.black,
+    -- collision_resize_shape = gears.shape.rectangle,
+    -- collision_resize_size_shape = gears.shape.rectangle,
+    -- collision_focus_shape = gears.shape.rectangle,
+    -- collision_focus_fg = colors.blue,
+    -- collision_focus_bg = colors.transparent,
 }
 
 default_theme.window_switcher_widget_bg = '#00000000'
