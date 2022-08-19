@@ -13,6 +13,7 @@ set -x PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
 set -Ux BUN_INSTALL ~/.bun
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
 fish_add_path -aP $XDG_DATA_HOME/npm/bin

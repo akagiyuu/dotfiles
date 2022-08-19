@@ -25,7 +25,7 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod }, "Return", function() awful.spawn(Terminal) end, {
         description = "open a terminal", group = "launcher"
     }),
-    awful.key({}, "Menu", function() awful.spawn("xdotool click 3") end, {
+    awful.key({ shift }, "Menu", function() awful.spawn("xdotool click 3") end, {
         description = "Right click", group = "launcher"
     }),
     awful.key({ mod }, "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, {
