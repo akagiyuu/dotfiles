@@ -3,12 +3,14 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 xrandr --newmode  "1680x1050R" 119.00 1680 1728 1760 1840 1050 1053 1059 1080 +hsync -vsync
 xrandr --addmode VGA-1 1680x1050R
 xrandr --output VGA-1 --mode 1680x1050R
 picom --experimental-backends -b
-~/.fehbg --no-fehbg &
+betterlockscreen -w
 
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 eval $(/usr/bin/gnome-keyring-daemon --start)
@@ -21,5 +23,4 @@ ibus-daemon -drx
 
 xset s 300
 xss-lock ~/Scripts/lock &
-
-numlockx &
+numlockx
