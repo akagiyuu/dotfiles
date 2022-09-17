@@ -1,7 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
-local beautiful = require("beautiful")
 -- local rubato = require('modules.rubato')
 -- local color = require('modules.color')
 --
@@ -48,19 +47,22 @@ return function(screen)
         widget_template = {
             nil,
             {
-                awful.widget.clienticon,
-                bottom  = 3,
-                top     = 5,
-                left    = 5,
-                right   = 3,
+                {
+                    id           = 'clienticon',
+                    forced_width = 20,
+                    widget       = awful.widget.clienticon,
+                },
+                bottom = 3,
+                top = 5,
+                left = 5,
+                right = 5,
                 opacity = 1,
-                id      = 'clienticon',
-                widget  = wibox.container.margin
+                widget = wibox.container.margin
             },
             {
+                wibox.widget.base.make_widget(),
                 forced_height = 4,
-                bg            = beautiful.border_normal,
-                id            = "background_role",
+                id            = 'background_role',
                 widget        = wibox.container.background,
             },
             -- create_callback = function(self)

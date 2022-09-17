@@ -14,7 +14,7 @@ local idle_prev = 0
 
 watch([[bash -c "cat /proc/stat | grep '^cpu '"]], 2, function(_, stdout)
     local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice =
-        stdout:match('(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s')
+    stdout:match('(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s')
 
     local total = user + nice + system + idle + iowait + irq + softirq + steal
 
@@ -22,7 +22,7 @@ watch([[bash -c "cat /proc/stat | grep '^cpu '"]], 2, function(_, stdout)
     local diff_total = total - total_prev
     local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
 
-    cpu.text =  math.floor(diff_usage) .. '%'
+    cpu.text = math.floor(diff_usage) .. '%'
     if diff_usage < 10 then cpu.text = '0' .. cpu.text end
 
     total_prev = total
@@ -32,16 +32,16 @@ end)
 
 --return cpu
 local cpu_icon = wibox.widget {
-	markup = '<span font="' .. beautiful.icon_font .. '"> </span>',
-	widget = wibox.widget.textbox,
+    markup = '<span font="' .. beautiful.icon_font .. '"> </span>',
+    widget = wibox.widget.textbox,
 }
 local cpu_widget = wibox.widget {
-	wibox.widget{
-		cpu_icon,
-		fg = colors.brightblue,
-		widget = wibox.container.background
-	},
-    wibox.widget{
+    wibox.widget {
+        cpu_icon,
+        fg = colors.brightblue,
+        widget = wibox.container.background
+    },
+    wibox.widget {
         cpu,
         fg = colors.brightblue,
         widget = wibox.container.background
@@ -49,3 +49,5 @@ local cpu_widget = wibox.widget {
     spacing = dpi(2),
     layout = wibox.layout.fixed.horizontal
 }
+
+return cpu_widget

@@ -1,6 +1,6 @@
-local beautiful = require("beautiful")
+local beautiful   = require("beautiful")
 local colorscheme = require("themes.colorschemes")
-local titlebar  = require("themes.titlebar")
+local titlebar    = require("themes.titlebar")
 
 local M = {}
 

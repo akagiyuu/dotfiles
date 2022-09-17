@@ -1,3 +1,4 @@
+# format = "$all"
 add_newline = false
 
 [line_break]
@@ -5,6 +6,30 @@ disabled = true
 
 [character]
 success_symbol = "[➜](bold green)"
+error_symbol = " [➜](bold red)"
 
 [package]
 disabled = true
+
+[status]
+disabled = false
+not_found_symbol = ""
+not_executable_symbol = ""
+sigint_symbol = "ﭦ"
+map_symbol = true
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "[=](bold fg:197) "
+ahead = "[⇡ ${count}](bold fg:159) "
+behind = "[⇣ ${count}](bold fg:159) "
+diverged = "[⇔](bold fg:197) " # red
+# up_to_date = ""
+untracked = "[?](bold fg:159) "
+stashed = "[$](bold fg:222) "
+modified = "[!](bold fg:222) "
+staged = '[++\($count\)](green)'
+renamed = "» "
+deleted = "[✘](bold fg:197) " # red
+
+

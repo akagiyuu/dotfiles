@@ -25,9 +25,7 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod }, "Return", function() awful.spawn(Terminal) end, {
         description = "open a terminal", group = "launcher"
     }),
-    awful.key({ shift }, "Menu", function() awful.spawn("xdotool click 3") end, {
-        description = "Right click", group = "launcher"
-    }),
+
     awful.key({ mod }, "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, {
         description = "Window Switcher", group = "launcher"
     }),
@@ -35,9 +33,9 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod }, ".", function() awful.spawn("rofimoji") end, {
         description = "Emoji picker", group = "launcher"
     }),
-    awful.key({ mod }, "d", function() awesome.emit_signal("dashboard::toggle") end, {
-        description = "Dashboard", group = "launcher"
-    }),
+    -- awful.key({ mod }, "d", function() awesome.emit_signal("dashboard::toggle") end, {
+    --     description = "Dashboard", group = "launcher"
+    -- }),
     awful.key({ mod }, "`", function() awful.screen.focused().quake:toggle() end, {
         description = 'Quake terminal', group = 'launcher'
     }),

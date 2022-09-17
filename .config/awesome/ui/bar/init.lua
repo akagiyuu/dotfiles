@@ -9,11 +9,11 @@ local barcontainer      = require("widget.barcontainer")
 local clock_widget      = require('widget.clock')
 local temprature_widget = barcontainer(require 'widget.temprature')
 local mem_widget        = barcontainer(require 'widget.memory')
-local cpu_widget        = barcontainer(require 'widget.cpu-gragh'())
+local cpu_widget        = barcontainer(require 'widget.cpu')
 local updates_widget    = barcontainer(require 'widget.updates')
-local fs_widget         = barcontainer(require 'widget.fs-widget' { mounts = { '/', '/home' } })
+-- local fs_widget         = barcontainer(require 'widget.fs-widget' { mounts = { '/', '/home' } })
 local network           = barcontainer(require 'widget.net_speed' {})
-local volume            = barcontainer(require 'widget.volume')
+-- local volume            = barcontainer(require 'widget.volume')
 local powerbutton       = require('widget.power')
 local quake             = require('modules.quake')
 
@@ -104,9 +104,9 @@ awful.screen.connect_for_each_screen(function(screen)
                     },
                     cpu_widget,
                     mem_widget,
-                    volume,
+                    -- volume,
                     network,
-                    fs_widget,
+                    -- fs_widget,
                     temprature_widget,
                     screen.systray,
                     screen.layoutbox,

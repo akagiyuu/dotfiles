@@ -15,6 +15,8 @@ set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
+set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
+set -x BUN_FORCE_HMR 1
 
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
 fish_add_path -aP $XDG_DATA_HOME/npm/bin
@@ -28,7 +30,7 @@ set -x LS_COLORS "$(vivid generate nord)"
 set -x EDITOR "nvim"
 set -x LC_COLLATE C
 set -x NEOVIDE_MULTIGRID 1
-set -x BAT_THEME Dracula
+set -x BAT_THEME catppuccin
 set -x DELTA_PAGER "less -+X"
 set -x NNN_PLUG 'p:preview-tui;d:diffs;j:autojump'
 set -x NNN_FIFO '/tmp/nnn.fifo'
