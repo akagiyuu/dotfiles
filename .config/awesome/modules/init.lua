@@ -1,7 +1,12 @@
 local bling = require("modules.bling")
+local modalbind = require("modules.modalbind")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+
+modalbind.init()
+modalbind.set_opacity(0.5)
+modalbind.set_location("top")
 
 bling.widget.window_switcher.enable {
     type = "thumbnail",

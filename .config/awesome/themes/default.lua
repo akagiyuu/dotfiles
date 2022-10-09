@@ -106,6 +106,9 @@ local default_theme = {
     -- collision_focus_shape = gears.shape.rectangle,
     -- collision_focus_fg = colors.blue,
     -- collision_focus_bg = colors.transparent,
+    modalbind_font = "Cascadia Code Italic 9",
+    modebox_fg = colors.brightwhite,
+    modebox_bg = colors.black
 }
 
 default_theme.window_switcher_widget_bg = '#00000000'

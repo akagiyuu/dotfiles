@@ -13,11 +13,6 @@ local modes = {
         { "h", function() awful.client.swap.bydirection("left") end, "swap with previous client by index" },
         { "l", function() awful.client.swap.bydirection("right") end, "swap with previous client by index" },
     },
-    switch = {
-        { "j", function() awful.client.focus.byidx(1) end, 'focus next by index' },
-        { "k", function() awful.client.focus.byidx(-1) end, "focus previous by index" },
-        { "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, "choose next" }
-    },
     volume = {
         { "d", function()
             awesome.emit_signal("signal::volume")
@@ -45,9 +40,7 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod, shift }, "q", awesome.quit, {
         description = "quit awesome", group = "awesome"
     }),
-    awful.key({ mod, "Shift" }, "c", function(c) c:kill() end, {
-        description = "close", group = "client"
-    }),
+
     awful.key({ mod }, "Escape", function() awesome.emit_signal("module::powermenu:show") end, {
         description = "show exit menu", group = "awesome"
     }),
@@ -85,10 +78,6 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod, ctrl }, "k", function() awful.screen.focus_relative(-1) end, {
         description = "focus the previous screen", group = "screen"
     }),
-    awful.key({ mod, ctrl }, "n", function()
-        local c = awful.client.restore()
-        if c then c:activate { raise = true, context = "key.unminimize" } end
-    end, { description = "restore minimized", group = "client" })
 }
 
 awful.keyboard.append_global_keybindings {
@@ -99,13 +88,9 @@ awful.keyboard.append_global_keybindings {
             stay_in_mode = true,
         }
     end),
-    awful.key({ mod }, "f", function()
-        modalbind.grab {
-            keymap = modes.switch,
-            name = "Switch Client",
-            stay_in_mode = true
-        }
-    end),
+    awful.key({ mod }, "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, {
+        description = "Window Switcher", group = "launcher"
+    }),
     awful.key({ mod, }, "l", function() awful.tag.incmwfact(0.05) end, {
         description = "increase master width factor", group = "layout"
     }),
@@ -113,8 +98,6 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod, }, "h", function() awful.tag.incmwfact(-0.05) end, {
         description = "decrease master width factor", group = "layout"
     }),
-
-
     awful.key({ mod, }, "space", function() awful.layout.inc(1) end, {
         description = "select next", group = "layout"
     }),
@@ -199,18 +182,44 @@ awful.keyboard.append_global_keybindings {
     end)
 }
 
+
 client.connect_signal("request::default_keybindings", function()
     awful.keyboard.append_client_keybindings {
-
-        -- awful.key({ mod, }, "f", function(c)
-        --     c.fullscreen = not c.fullscreen
-        --     c:raise()
-        -- end, { description = "toggle fullscreen", group = "client" }),
+        awful.key({ mod, "Shift" }, "c", function(c) c:kill() end, {
+            description = "close", group = "client"
+        }),
+        awful.key({ mod, }, "f", function(c)
+            c.fullscreen = not c.fullscreen
+            c:raise()
+        end, { description = "toggle fullscreen", group = "client" }),
         awful.key({ mod, "Control" }, "space", awful.client.floating.toggle, {
             description = "toggle floating", group = "client"
         }),
         awful.key({ mod }, "o", function(c) c:move_to_screen() end, {
             description = "move to screen", group = "client"
         }),
+        awful.key({ mod }, "t", function(c) c.ontop = not c.ontop end, {
+            description = "toggle keep on top", group = "client"
+        }),
+        awful.key({ mod, }, "n", function(c) c.minimized = true end, {
+            description = "minimize", group = "client"
+        }),
+        awful.key({ mod, }, "m", function(c)
+            c.maximized = not c.maximized
+            c:raise()
+        end, { description = "(un)maximize", group = "client" }),
+        awful.key({ mod, ctrl }, "m", function(c)
+            c.maximized_vertical = not c.maximized_vertical
+            c:raise()
+        end, { description = "(un)maximize vertically", group = "client" }),
+        awful.key({ mod, shift }, "m", function(c)
+            c.maximized_horizontal = not c.maximized_horizontal
+            c:raise()
+        end, { description = "(un)maximize horizontally", group = "client" }),
+        awful.key({ mod, ctrl }, "n", function()
+            local c = awful.client.restore()
+            if c then c:activate { raise = true, context = "key.unminimize" } end
+        end, { description = "restore minimized", group = "client" })
+
     }
 end)

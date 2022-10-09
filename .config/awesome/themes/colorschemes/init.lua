@@ -4,7 +4,7 @@ M.init = function(theme)
     theme = theme or "ayu"
     local color_palette = require(string.format("themes.colorschemes.%s", theme))
 
-    _G.colors = {
+    _G.colors             = {
         black         = color_palette[1],
         red           = color_palette[2],
         green         = color_palette[3],
@@ -23,9 +23,9 @@ M.init = function(theme)
         brightwhite   = color_palette[16],
         container     = color_palette[17],
     }
-    _G.colors.transparent   = "#00000000"
+    _G.colors.transparent = "#00000000"
 
-    _G.colors.random = function ()
+    _G.colors.random = function()
         return color_palette[math.random(1, #color_palette)]
     end
 end
@@ -45,6 +45,7 @@ M.set_focus_colors = function(theme, color)
     theme.notification_border_color = color
     theme.menu_border_color         = color
     theme.titlebar_fg_focus         = color
+    theme.modebox_border      = color
 end
 
 return M
