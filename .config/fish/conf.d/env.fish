@@ -14,20 +14,12 @@ set -Ux BUN_INSTALL ~/.bun
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
-set -x QT_QPA_PLATFORMTHEME "qt5ct"
+set -x QT_QPA_PLATFORMTHEME qt5ct
 set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x BUN_FORCE_HMR 1
-
-fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
-fish_add_path -aP $XDG_DATA_HOME/npm/bin
-fish_add_path -aP $CARGO_HOME/bin
-fish_add_path -aP ~/Applications/bat-extras/src
-fish_add_path -aP ~/Applications/omnisharp
-fish_add_path -aP ~/.bun/bin
-
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LS_COLORS "$(vivid generate nord)"
-set -x EDITOR "nvim"
+set -x EDITOR nvim
 set -x LC_COLLATE C
 set -x NEOVIDE_MULTIGRID 1
 set -x BAT_THEME catppuccin
@@ -47,3 +39,11 @@ set -x FZF_DEFAULT_OPTS "
 --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+set -x DOTNET_JitDisasm "Main"
+
+fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
+fish_add_path -aP $XDG_DATA_HOME/npm/bin
+fish_add_path -aP $CARGO_HOME/bin
+fish_add_path -aP ~/Applications/bat-extras/src
+fish_add_path -aP ~/Applications/omnisharp
+fish_add_path -aP ~/.bun/bin

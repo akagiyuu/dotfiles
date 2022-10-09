@@ -16,3 +16,11 @@
 [submodule ".config/awesome/collision"]
 	path = .config/awesome/collision
 	url = https://github.com/manos00/collision
+[submodule ".config/awesome/modules/awesome-modalbind"]
+	path = .config/awesome/modules/awesome-modalbind
+	url = https://github.com/crater2150/awesome-modalbind
+	branch = new-keygrabber
+[submodule ".config/awesome/modules/modalbind"]
+	path = .config/awesome/modules/modalbind
+	url = https://github.com/crater2150/awesome-modalbind
+	branch = new-keygrabber

@@ -9,4 +9,6 @@ require("themes").init {
 require("configuration")
 require("ui")
 require("modules")
+local modalbind = require("modules.modalbind")
+modalbind.init()
 

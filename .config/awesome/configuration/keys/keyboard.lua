@@ -1,12 +1,38 @@
 local awful         = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local modalbind     = require("modules.modalbind")
 -- local rubato        = require("modules.rubato")
 local shift         = "Shift"
 local ctrl          = "Control"
 local alt           = "Mod2"
 
-awful.keyboard.append_global_keybindings {
+local modes = {
+    swap = {
+        { "j", function() awful.client.swap.bydirection("down") end, "swap with next client by index" },
+        { "k", function() awful.client.swap.bydirection("up") end, "swap with previous client by index" },
+        { "h", function() awful.client.swap.bydirection("left") end, "swap with previous client by index" },
+        { "l", function() awful.client.swap.bydirection("right") end, "swap with previous client by index" },
+    },
+    switch = {
+        { "j", function() awful.client.focus.byidx(1) end, 'focus next by index' },
+        { "k", function() awful.client.focus.byidx(-1) end, "focus previous by index" },
+        { "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, "choose next" }
+    },
+    volume = {
+        { "d", function()
+            awesome.emit_signal("signal::volume")
+            awful.util.spawn("pamixer -d 6", false)
+        end, "decrease volume" },
 
+        { "u", function()
+            awesome.emit_signal("signal::volume")
+            awful.util.spawn("pamixer -i 6", false)
+        end, "increase volume" },
+        { "XF87AudioMute", function() awful.util.spawn("pamixer -t", false) end, "toggle mute" },
+    }
+}
+
+awful.keyboard.append_global_keybindings {
     awful.key({ mod }, "s", hotkeys_popup.show_help, {
         description = "show help", group = "awesome"
     }),
@@ -19,23 +45,24 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod, shift }, "q", awesome.quit, {
         description = "quit awesome", group = "awesome"
     }),
+    awful.key({ mod, "Shift" }, "c", function(c) c:kill() end, {
+        description = "close", group = "client"
+    }),
     awful.key({ mod }, "Escape", function() awesome.emit_signal("module::powermenu:show") end, {
         description = "show exit menu", group = "awesome"
     }),
     awful.key({ mod }, "Return", function() awful.spawn(Terminal) end, {
         description = "open a terminal", group = "launcher"
     }),
-
-    awful.key({ mod }, "Tab", function() awesome.emit_signal("bling::window_switcher::turn_on") end, {
-        description = "Window Switcher", group = "launcher"
+    awful.key({ mod }, "p", function() awful.spawn(Paths.home .. "/.config/rofi/bin/launcher_misc") end, {
+        description = "Apps", group = "launcher"
     }),
-
+    awful.key({ mod }, "b", function() awful.spawn("firefox") end, {
+        description = "Browser", group = "launcher"
+    }),
     awful.key({ mod }, ".", function() awful.spawn("rofimoji") end, {
         description = "Emoji picker", group = "launcher"
     }),
-    -- awful.key({ mod }, "d", function() awesome.emit_signal("dashboard::toggle") end, {
-    --     description = "Dashboard", group = "launcher"
-    -- }),
     awful.key({ mod }, "`", function() awful.screen.focused().quake:toggle() end, {
         description = 'Quake terminal', group = 'launcher'
     }),
@@ -65,25 +92,20 @@ awful.keyboard.append_global_keybindings {
 }
 
 awful.keyboard.append_global_keybindings {
-    awful.key({ mod, shift }, "j", function() awful.client.swap.bydirection("down") end, {
-        description = "swap with next client by index", group = "client"
-    }),
-    awful.key({ mod, shift }, "k", function() awful.client.swap.bydirection("up") end, {
-        description = "swap with previous client by index", group = "client"
-    }),
-    awful.key({ mod, shift }, "h", function() awful.client.swap.bydirection("left") end, {
-        description = "swap with previous client by index", group = "client"
-    }),
-    awful.key({ mod, shift }, "l", function() awful.client.swap.bydirection("right") end, {
-        description = "swap with previous client by index", group = "client"
-    }),
-
-    awful.key({ mod, }, "j", function() awful.client.focus.byidx(1) end, {
-        description = "focus next by index", group = "client"
-    }),
-    awful.key({ mod, }, "k", function() awful.client.focus.byidx(-1) end, {
-        description = "focus previous by index", group = "client"
-    }),
+    awful.key({ mod, shift }, "s", function()
+        modalbind.grab {
+            keymap = modes.swap,
+            name = "Swap Client",
+            stay_in_mode = true,
+        }
+    end),
+    awful.key({ mod }, "f", function()
+        modalbind.grab {
+            keymap = modes.switch,
+            name = "Switch Client",
+            stay_in_mode = true
+        }
+    end),
     awful.key({ mod, }, "l", function() awful.tag.incmwfact(0.05) end, {
         description = "increase master width factor", group = "layout"
     }),
@@ -159,34 +181,6 @@ awful.keyboard.append_global_keybindings {
 }
 
 awful.keyboard.append_global_keybindings {
-    awful.key({ mod, shift }, "d", function()
-        awesome.emit_signal("signal::volume")
-        awful.util.spawn("pamixer -d 6", false)
-    end, { description = "decrease volume", group = "volume" }),
-
-    awful.key({ mod, shift }, "u", function()
-        awesome.emit_signal("signal::volume")
-        awful.util.spawn("pamixer -i 6", false)
-    end, { description = "increase volume", group = "volume" }),
-
-    awful.key({}, "XF87AudioMute", function() awful.util.spawn("pamixer -t", false) end, {
-        description = "toggle mute", group = "volume"
-    }),
-}
-
-awful.keyboard.append_global_keybindings {
-    awful.key({ ctrl, shift }, "f", function() awful.spawn("thunar") end, {
-        description = "File Manager", group = "launcher"
-    }),
-
-    awful.key({ mod }, "p", function() awful.spawn(Paths.home .. "/.config/rofi/bin/launcher_misc") end, {
-        description = "Apps", group = "launcher"
-    }),
-
-    awful.key({ mod }, "b", function() awful.spawn(string.format("firefox")) end, {
-        description = "Browser", group = "launcher"
-    }),
-
     awful.key({}, "Print", function() awful.util.spawn("/home/yuu/Scripts/screenshot") end, {
         description = "Fullscreen", group = "Screenshot"
     }),
@@ -196,41 +190,27 @@ awful.keyboard.append_global_keybindings {
     awful.key({ mod, ctrl }, "Print", function() awful.util.spawn("/home/yuu/Scripts/rofi-screenshot") end, {
         description = "Menu", group = "Screenshot"
     }),
+    awful.key({ mod }, "v", function()
+        modalbind.grab {
+            keymap = modes.volume,
+            name = "Volume",
+            stay_in_mode = true
+        }
+    end)
 }
 
 client.connect_signal("request::default_keybindings", function()
     awful.keyboard.append_client_keybindings {
-        awful.key({ mod, "Shift" }, "c", function(c) c:kill() end, {
-            description = "close", group = "client"
-        }),
 
-        awful.key({ mod, }, "f", function(c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end, { description = "toggle fullscreen", group = "client" }),
+        -- awful.key({ mod, }, "f", function(c)
+        --     c.fullscreen = not c.fullscreen
+        --     c:raise()
+        -- end, { description = "toggle fullscreen", group = "client" }),
         awful.key({ mod, "Control" }, "space", awful.client.floating.toggle, {
             description = "toggle floating", group = "client"
         }),
         awful.key({ mod }, "o", function(c) c:move_to_screen() end, {
             description = "move to screen", group = "client"
         }),
-        awful.key({ mod }, "t", function(c) c.ontop = not c.ontop end, {
-            description = "toggle keep on top", group = "client"
-        }),
-        awful.key({ mod, }, "n", function(c) c.minimized = true end, {
-            description = "minimize", group = "client"
-        }),
-        awful.key({ mod, }, "m", function(c)
-            c.maximized = not c.maximized
-            c:raise()
-        end, { description = "(un)maximize", group = "client" }),
-        awful.key({ mod, ctrl }, "m", function(c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end, { description = "(un)maximize vertically", group = "client" }),
-        awful.key({ mod, shift }, "m", function(c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end, { description = "(un)maximize horizontally", group = "client" }),
     }
 end)
