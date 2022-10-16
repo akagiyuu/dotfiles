@@ -1,0 +1,17 @@
+theme = "catppuccin"
+
+[editor]
+color-modes = true
+true-color = true
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "file-type","file-encoding", "file-line-ending", "position"]
+separator = "\u2502"
+
+[editor.cursor-shape]
+insert = "bar"

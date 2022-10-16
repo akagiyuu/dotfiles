@@ -16,12 +16,14 @@ set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -x QT_QPA_PLATFORMTHEME qt5ct
 set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
+set -x OMNISHARPHOME "$XDG_CONFIG_HOME"/omnisharp
+set -x PARALLEL_HOME "$XDG_CONFIG_HOME"/parallel
 set -x BUN_FORCE_HMR 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LS_COLORS "$(vivid generate nord)"
 set -x EDITOR nvim
 set -x LC_COLLATE C
-set -x NEOVIDE_MULTIGRID 1
+set -x NEOVIDE_MULTIGRID true
 set -x BAT_THEME catppuccin
 set -x DELTA_PAGER "less -+X"
 set -x NNN_PLUG 'p:preview-tui;d:diffs;j:autojump'
@@ -39,7 +41,7 @@ set -x FZF_DEFAULT_OPTS "
 --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-set -x DOTNET_JitDisasm "Main"
+set -x DOTNET_JitDisasm Main
 
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
 fish_add_path -aP $XDG_DATA_HOME/npm/bin
