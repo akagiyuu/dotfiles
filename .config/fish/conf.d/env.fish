@@ -42,6 +42,9 @@ set -x FZF_DEFAULT_OPTS "
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 set -x DOTNET_JitDisasm Main
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+fish_add_path -aP $ANDROID_SDK_ROOT/emulator
+fish_add_path -aP $ANDROID_SDK_ROOT/platform-tools
 
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
 fish_add_path -aP $XDG_DATA_HOME/npm/bin
