@@ -9,10 +9,12 @@ local config = {
         background = 'black',
     },
     font = wezterm.font_with_fallback {
-        'Cascadia Code',
+        'MonoLisa',
         'Symbols Nerd Font',
         'nonicons'
     },
+    font_size = 14.0,
+    line_height = 1.2,
     default_cursor_style = 'BlinkingBar',
     window_close_confirmation = "NeverPrompt",
     enable_scroll_bar = true,
