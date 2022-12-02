@@ -33,7 +33,7 @@ set -x FZF_PREVIEW_COMMAND "bat --line-range :500 --color=always {}"
 set -x FZF_DEFAULT_OPTS "
 --preview-window hidden
 --preview '$FZF_PREVIEW_COMMAND'
---bind='ctrl-p:toggle-preview'
+--bind='ctrl-p:toggle-preview,ctrl-t:toggle-all'
 --border=sharp
 --prompt='➜ '
 --pointer='➜'
@@ -41,8 +41,14 @@ set -x FZF_DEFAULT_OPTS "
 --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-set -x DOTNET_JitDisasm Main
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+# set -x DOTNET_JitDisasm Main
+set -x BORG_REPO "$HOME/Data/Backup"
+set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
+# set -x ANDROID_HOME "$XDG_DATA_HOME"/android
+set -x GRADLE_USER_HOME "$XDG_DATA_HOME"/gradle
+# set -x PLATFORMIO_CORE_DIR "$XDG_DATA_HOME"/platformio
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
 fish_add_path -aP $ANDROID_SDK_ROOT/emulator
 fish_add_path -aP $ANDROID_SDK_ROOT/platform-tools
 
@@ -52,3 +58,4 @@ fish_add_path -aP $CARGO_HOME/bin
 fish_add_path -aP ~/Applications/bat-extras/src
 fish_add_path -aP ~/Applications/omnisharp
 fish_add_path -aP ~/.bun/bin
+fish_add_path -aP $XDG_DATA_HOME/nvim/mason/bin

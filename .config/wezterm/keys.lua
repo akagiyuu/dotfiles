@@ -13,7 +13,7 @@ local config = {
     map({ "super", "alt" }, "v", action { SplitVertical = { domain = "CurrentPaneDomain" } }),
     map({ "super", "alt" }, "c", action { CloseCurrentPane = { confirm = true } }),
 
-    map("ctrl", "Space", action { SendString="\x1B[32;5u" }),
+    -- map("ctrl", "Space", action { SendString="\x1B[32;5u" }),
 }
 
 return config
