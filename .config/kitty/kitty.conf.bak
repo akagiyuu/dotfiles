@@ -2013,6 +2013,6 @@ map ctrl+alt+t goto_layout tall
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Ayu
 include current-theme.conf
 # END_KITTY_THEME

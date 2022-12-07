@@ -1,5 +1,5 @@
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
-alias icat='kitty +kitten icat'
+alias icat='wezterm imgcat'
 alias ls='exa --icons -l'
 alias f='fzf'
 alias vim='nvim'
