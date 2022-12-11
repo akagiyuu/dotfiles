@@ -1,140 +1,35 @@
-# Syntax highlighting
-# -------------------
-"type" = "yellow"
-"type.enum.variant" = "peach"
+inherits = "catppuccin_mocha"
 
-"constructor" = "sapphire"
-
-"constant" = "peach"
-"constant.character" = "teal"
-"constant.character.escape" = "pink"
-
-"string" = "green"
-"string.regexp" = "peach"
-"string.special" = "pink"
-
-"comment" = { fg = "overlay1", modifiers = ["italic"] }
-
-"variable" = "text"
-"variable.parameter" = { fg = "maroon", modifiers = ["italic"] }
-"variable.builtin" = "red"
-"variable.other.member" = "teal"
-
-"label" = "sapphire" # used for lifetimes
-
-"punctuation" = "overlay2"
-
-"keyword" = "mauve"
-"keyword.control.conditional" = { fg = "mauve", modifiers = ["italic"] }
-
-"operator" = "sky"
-
-"function" = "blue"
-"function.builtin" = "peach"
-"function.macro" = "teal"
-
-"tag" = "mauve"
-
-"namespace" = { fg = "blue", modifiers = ["italic"] }
-
-"special" = "blue" # fuzzy highlight
-
-"markup.heading.marker" = { fg = "peach", modifiers = ["bold"] }
-"markup.heading.1" = "lavender"
-"markup.heading.2" = "mauve"
-"markup.heading.3" = "green"
-"markup.heading.4" = "yellow"
-"markup.heading.5" = "pink"
-"markup.heading.6" = "teal"
-"markup.list" = "mauve"
-"markup.bold" = { modifiers = ["bold"] }
-"markup.italic" = { modifiers = ["italic"] }
-"markup.link.url" = { fg = "peach", modifiers = ["underlined"] }
-"markup.link.text" = "blue"
-"markup.raw" = "flamingo"
-
-"diff.plus" = "green"
-"diff.minus" = "red"
-"diff.delta" = "yellow"
-
-# User Interface
-# --------------
 "ui.background" = { fg = "text" }
-
-"ui.linenr" = { fg = "surface1" }
-"ui.linenr.selected" = { fg = "lavender" }
-
-"ui.statusline" = { fg = "overlay1", bg = "mantle" }
-"ui.statusline.inactive" = { fg = "overlay1", bg = "mantle" }
-"ui.statusline.normal" = { fg = "surface0", bg = "lavender", modifiers = ["bold"] }
-"ui.statusline.insert" = { fg = "surface0", bg = "green", modifiers = ["bold"]  }
-"ui.statusline.select" = { fg = "surface0", bg = "flamingo", modifiers = ["bold"]  }
-
-"ui.bufferline.active" = { fg = "text", bg = "base", modifiers = ["bold"] }
-"ui.bufferline" = { fg = "overlay1", bg = "mantle" }
-
 "ui.popup" = { fg = "text" }
-"ui.window" = { fg = "crust" }
 "ui.help" = { fg = "overlay2" }
-
-"ui.text" = "text"
-"ui.text.focus" = { fg = "text", bg = "surface0", modifiers = ["bold"] }
-
-"ui.virtual" = "overlay0"
-"ui.virtual.ruler" = { bg = "surface0" }
-"ui.virtual.indent-guide" = "surface0"
-
-"ui.selection" = { bg = "surface1" }
-
-"ui.cursor" = { fg = "base", bg = "secondary_cursor" }
-"ui.cursor.primary" = { fg = "base", bg = "rosewater" }
-"ui.cursor.match" = { fg = "peach", modifiers = ["bold"] }
-
-"ui.cursorline.primary" = { bg = "cursorline" }
-
-"ui.highlight" = { bg = "surface1" }
-
-"ui.menu" = { fg = "overlay2" }
-"ui.menu.selected" = { fg = "text", bg = "surface1", modifiers = ["bold"] }
-
-diagnostic = { modifiers = ["underlined"] }
-
-error = "red"
-warning = "yellow"
-info = "sky"
-hint = "teal"
+diagnostic = {  underline = { style = "curl"} }
 
 [palette]
-# catppuccin palette colors
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
+rosewater = "#F5E0DC"
+flamingo = "#F2CDCD"
+mauve = "#DDB6F2"
+pink = "#F5C2E7"
+red = "#F28FAD"
+maroon = "#E8A2AF"
+peach = "#F8BD96"
+yellow = "#FAE3B0"
+green = "#ABE9B3"
+blue = "#96CDFB"
+sky = "#89DCEB"
+teal = "#B5E8E0"
+lavender = "#C9CBFF"
 
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
+text = "#D9E0EE"
+subtext1 = "#BAC2DE"
+subtext0 = "#A6ADC8"
+overlay2 = "#C3BAC6"
+overlay1 = "#988BA2"
+overlay0 = "#6E6C7E"
+surface2 = "#6E6C7E"
+surface1 = "#575268"
+surface0 = "#302D41"
 
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
-
-# derived colors by blending existing palette colors
-cursorline = "#2a2b3c"
-secondary_cursor = "#b5a6a8"
+base = "#1E1E2E"
+mantle = "#1A1826"
+crust = "#161320"

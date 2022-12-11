@@ -3,9 +3,8 @@ theme = "catppuccin"
 [editor]
 color-modes = true
 true-color = true
-
-[editor.indent-guides]
-render = true
+bufferline = "multiple"
+auto-save = true
 
 [editor.statusline]
 left = ["mode", "spinner"]
@@ -15,3 +14,18 @@ separator = "\u2502"
 
 [editor.cursor-shape]
 insert = "bar"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
+[editor.indent-guides]
+render = true
