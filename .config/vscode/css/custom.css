@@ -1,0 +1,544 @@
+/*
+ * vscode-powerline/powerline.css
+ *
+ * Powerline for VS Code, enhanced for VSCodeVim
+ */
+body {
+  --powerline-mode-fg: #282c36;
+  --powerline-normal-bg: #c3e88d;
+  --powerline-insert-bg: #89ddff;
+  --powerline-replace-bg: #ff5370;
+  --powerline-visual-bg: #ffcb6b;
+  --powerline-inner-fg: #ffffff;
+  --powerline-inner-bg: #202020;
+  --powerline-inner-bg-hl: #303030;
+  --powerline-second-segment-fg: #ffffff;
+  --powerline-second-segment-bg: rgba(0, 0, 0, 0.5);
+  --powerline-separator: #303030;
+  --powerline-vim-command-line: #ffffff;
+  --powerline-mode-weight: bold; }
+
+footer.statusbar {
+  background-color: var(--powerline-normal-bg) !important;
+  overflow: hidden !important; }
+
+.statusbar-item a:hover {
+  background-color: transparent !important; }
+
+.statusbar-item {
+  position: relative;
+  background: transparent; }
+
+.statusbar-item *,
+.statusbar-item:before,
+.statusbar-item:after {
+  z-index: 1; }
+
+.statusbar-item > :first-child {
+  position: relative; }
+
+/* second from left and on */
+.statusbar-item.left > :first-child {
+  margin: 0 0 0 -10px !important; }
+
+/* second from left */
+.statusbar-item.left.first-visible-item {
+  margin-right: -2px;
+  /* avoid 1px leak on right if only 2 items are visible */ }
+
+/* first from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  padding-right: 5px !important; }
+
+/* first from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label='']) > :first-child {
+  margin: 0 0 0 22px !important; }
+
+/* second from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+> :first-child {
+  margin: 0 -11px 0 0 !important; }
+
+/* third from right and on */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+> :first-child {
+  margin: 0 -11px 0 0 !important; }
+
+/* first from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  color: var(--powerline-mode-fg); }
+
+/* second from left, second from right */
+.statusbar-item.left.first-visible-item,
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  padding: 0 22px !important; }
+
+/* second from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  margin-right: -22px !important; }
+
+/* third from left */
+/* TODO(pcwalton): fix hidden logic */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary),
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not([aria-label^='-- ']) {
+  margin-left: -21px !important;
+  padding: 0 22px !important; }
+
+/* third from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  margin-right: -23px !important;
+  padding: 0 22px !important; }
+
+/* fourth from left */
+/* TODO(pcwalton): fix hidden logic */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary),
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left
+~ .statusbar-item.left:not([aria-label^='-- ']) {
+  margin-left: -21px !important; }
+
+/* fourth from right */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  margin-right: -21px !important; }
+
+/* second from left: left triangle */
+.statusbar-item.left.first-visible-item:before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 22px;
+  right: 22px;
+  box-sizing: border-box;
+  border-left: solid transparent 11px;
+  border-top: solid var(--powerline-second-segment-bg) 12px;
+  border-right: solid var(--powerline-second-segment-bg) 11px;
+  border-bottom: solid var(--powerline-second-segment-bg) 12px; }
+
+/* second from right: right triangle */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']):before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  height: 22px;
+  left: 22px;
+  box-sizing: border-box;
+  border-left: solid var(--powerline-second-segment-bg) 11px;
+  border-top: solid var(--powerline-second-segment-bg) 12px;
+  border-right: solid transparent 11px;
+  border-bottom: solid var(--powerline-second-segment-bg) 12px;
+  /* 12px avoids a rounding error??? */ }
+
+/* second from left: right triangle */
+.statusbar-item.left.first-visible-item:after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid var(--powerline-second-segment-bg) 11px;
+  border-top: solid transparent 12px;
+  border-right: solid transparent 11px;
+  border-bottom: solid transparent 12px; }
+
+/* second from right: left triangle */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']):after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid transparent 11px;
+  border-top: solid transparent 12px;
+  border-right: solid var(--powerline-second-segment-bg) 11px;
+  border-bottom: solid transparent 12px; }
+
+/* third from left: left triangle */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary):before,
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not([aria-label^='-- ']):before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid transparent 11px;
+  border-top: solid var(--powerline-inner-bg) 12px;
+  border-right: solid var(--powerline-inner-bg) 11px;
+  border-bottom: solid var(--powerline-inner-bg) 12px; }
+
+/* third from right: right triangle */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']):before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: auto;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid var(--powerline-inner-bg) 11px;
+  border-top: solid var(--powerline-inner-bg) 12px;
+  border-right: solid transparent 11px;
+  border-bottom: solid var(--powerline-inner-bg) 12px; }
+
+/* third from left: right triangle */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary):after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid var(--powerline-inner-bg) 11px;
+  border-top: solid var(--powerline-separator) 12px;
+  border-right: solid var(--powerline-separator) 11px;
+  border-bottom: solid var(--powerline-separator) 12px; }
+
+/* third from right: left triangle */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']):after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid var(--powerline-separator) 11px;
+  border-top: solid var(--powerline-separator) 12px;
+  border-right: solid var(--powerline-inner-bg) 11px;
+  border-bottom: solid var(--powerline-separator) 12px; }
+
+/* last if VSCodeVim status/command: right triangle */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left#vscodevim\.vim\.primary:not(
+[aria-label^='-- ']
+):after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  height: 22px;
+  width: 22px;
+  box-sizing: border-box;
+  border-left: solid var(--powerline-inner-bg) 11px;
+  border-top: solid var(--powerline-inner-bg) 12px;
+  border-right: solid var(--powerline-inner-bg) 11px;
+  border-bottom: solid var(--powerline-inner-bg) 12px; }
+
+/* second from left (hovered) */
+.statusbar-item.left.first-visible-item:hover a {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 11px, var(--powerline-inner-bg-hl) 11px, var(--powerline-inner-bg-hl)); }
+
+/* second from right (hovered) */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']):hover
+a {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 11px, var(--powerline-inner-bg-hl) 11px, var(--powerline-inner-bg-hl)); }
+
+/* third and on from left (hovered) */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary):hover
+a {
+  background-image: none;
+  background-color: var(--powerline-inner-bg-hl) !important; }
+
+/* third and on from right (hovered) */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']):hover
+a {
+  background-image: none;
+  background-color: var(--powerline-inner-bg-hl) !important; }
+
+/* second and on from left (hovered): left triangle */
+.statusbar-item.left.first-visible-item:hover:before,
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary):hover:before {
+  border-top-color: var(--powerline-inner-bg-hl);
+  border-right-color: var(--powerline-inner-bg-hl);
+  border-bottom-color: var(--powerline-inner-bg-hl); }
+
+/* second and on from right (hovered): left triangle */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not(
+[aria-label='']
+):hover:before {
+  border-top-color: var(--powerline-inner-bg-hl) !important;
+  border-left-color: var(--powerline-inner-bg-hl) !important;
+  border-bottom-color: var(--powerline-inner-bg-hl) !important; }
+
+/* second from left and on (hovered): right triangle */
+.statusbar-item.left.first-visible-item:hover:after,
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary):hover:after {
+  border-left-color: var(--powerline-inner-bg-hl); }
+
+/* second from right and on (hovered): right triangle */
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not(
+[aria-label='']
+):hover:after {
+  border-right-color: var(--powerline-inner-bg-hl) !important; }
+
+/* third from left and third from right: background */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary)
+a,
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not([aria-label^='-- '])
+a,
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+a {
+  background-color: var(--powerline-inner-bg);
+  background-image: none; }
+
+/* fourth from left: left arrow */
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary)
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary):before {
+  height: 0;
+  width: 0; }
+
+.statusbar-item.first-visible-item {
+  position: relative;
+  padding-left: 0; }
+
+.statusbar-item.first-visible-item
+~ .statusbar-item.left:not(#vscodevim\.vim\.primary) {
+  position: relative; }
+
+/* cover up background on left side */
+.left-items:after {
+  flex-grow: 1;
+  content: ' ';
+  display: block;
+  margin-top: -1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 11px, var(--powerline-inner-bg) 11px, var(--powerline-inner-bg));
+  background-origin: border-box;
+  border-left: solid transparent 11px;
+  border-top: solid var(--powerline-inner-bg) 12px;
+  border-right: solid var(--powerline-inner-bg) 11px;
+  border-bottom: solid var(--powerline-inner-bg) 12px;
+  margin-left: -21px;
+  z-index: 1; }
+
+/* cover up background on right side */
+.right-items:after {
+  content: ' ';
+  display: block;
+  margin-top: -1px;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 11px, var(--powerline-inner-bg) 11px, var(--powerline-inner-bg));
+  background-origin: border-box;
+  border-left: solid var(--powerline-inner-bg) 11px;
+  border-top: solid var(--powerline-inner-bg) 12px;
+  border-right: solid transparent 11px;
+  border-bottom: solid var(--powerline-inner-bg) 12px;
+  margin-right: -21px;
+  z-index: 1; }
+
+/* Powerline status */
+#mimiga-net\.powerline-status.statusbar-item {
+  font-family: system-ui, 'MesloLGS NF', sans-serif; }
+
+/* VSCodeVim mode indicator */
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='--'] {
+  order: -1; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='--']:after {
+  position: absolute;
+  content: '';
+  background: inherit;
+  top: 0;
+  left: 100%;
+  width: 10000px;
+  height: 100px;
+  z-index: 0;
+  pointer-events: none; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='--'] {
+  font-size: 12px;
+  padding: 0 5px 0 9px;
+  font-weight: var(--powerline-mode-weight); }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='--'] a {
+  margin: 0 !important;
+  padding: 0 !important; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- NORMAL --'],
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- INSERT --'],
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- REPLACE --'],
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- VISUAL --'],
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- VISUAL LINE --'],
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- VISUAL BLOCK --'] {
+  font-size: 0; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='-- NORMAL'] {
+  color: var(--powerline-mode-fg);
+  background: var(--powerline-normal-bg); }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='-- INSERT'] {
+  color: var(--powerline-mode-fg);
+  background: var(--powerline-insert-bg); }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='-- REPLACE'] {
+  color: var(--powerline-mode-fg);
+  background: var(--powerline-replace-bg); }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label^='-- VISUAL'] {
+  color: var(--powerline-mode-fg);
+  background: var(--powerline-visual-bg); }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- NORMAL --']:before {
+  content: 'NORMAL';
+  font-size: 12px; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- INSERT --']:before {
+  content: 'INSERT';
+  font-size: 12px; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- REPLACE --']:before {
+  content: 'REPLACE';
+  font-size: 12px; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- VISUAL --']:before {
+  content: 'VISUAL';
+  font-size: 12px; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- VISUAL LINE --']:before {
+  content: 'V-LINE';
+  font-size: 12px; }
+
+.statusbar-item#vscodevim\.vim\.primary[aria-label='-- VISUAL BLOCK --']:before {
+  content: 'V-BLOCK';
+  font-size: 12px; }
+
+/* More VSCodeVim */
+.statusbar-item.left.first-visible-item,
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']) {
+  color: var(--powerline-second-segment-fg); }
+
+.statusbar-item.left.first-visible-item
+~ .statusbar-item.left:not([aria-hidden]),
+.statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label=''])
+~ .statusbar-item.right:not([aria-hidden]):not([aria-label='']),
+.left-items:after {
+  color: var(--powerline-inner-fg); }
+
+/* Nice-to-have for VSCodeVim status bar */
+.statusbar-item.left#vscodevim\.vim\.primary[aria-label^=':'],
+.statusbar-item.left#vscodevim\.vim\.primary[aria-label^='/'],
+.statusbar-item.left#vscodevim\.vim\.primary[aria-label^='?'],
+.statusbar-item.right#vscodevim\.vim\.primary {
+  font-family: 'MesloLGS NF', Consolas, monospace;
+  color: var(--powerline-vim-command-line); }
+
+/* --- --- Doc Popup Window --- --- */
+.monaco-editor .monaco-hover {
+  border-radius: 6px;
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+  padding: 4px;
+  min-width: 600px !important;
+  max-height: 80% !important;
+  max-width: 80% !important; }
+
+.monaco-scrollable-element > .scrollbar > .slider {
+  padding: 0 0 0 2px !important;
+  width: 5px !important; }
+
+.monaco-editor .monaco-hover .monaco-hover-content {
+  max-height: 600px !important; }
+
+/* --- --- IntelliSense Window --- --- */
+.monaco-editor .suggest-widget {
+  border-radius: 6px;
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+  margin: 4px;
+  padding: 8px;
+  min-width: 550px !important;
+  max-width: 80% !important; }
+
+.monaco-editor .overlayWidgets .suggest-details-container {
+  border-radius: 6px;
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+  min-width: 300px !important;
+  max-width: 80% !important; }
+
+.monaco-editor .suggest-details {
+  border-radius: 6px; }
+
+tree > .monaco-list > .monaco-scrollable-element {
+  margin-right: -6px;
+  padding-right: 4px;
+  border-radius: 6px; }
+
+.monaco-list > .monaco-scrollable-element {
+  border-radius: 6px; }
+
+.codeActionMenuWidget {
+  border-radius: 6px;
+  box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden; }
+
+/* --- --- Notifications --- --- */
+.monaco-workbench > .notifications-center,
+.monaco-workbench > .notifications-toasts,
+.monaco-workbench
+> .notifications-toasts
+.notification-toast-container
+> .notification-toast,
+.monaco-workbench .notifications-list-container .notification-list-item,
+.monaco-list-rows,
+.notifications-list-container {
+  border-radius: 6px; }
+
+.monaco-text-button {
+  border-radius: 3px; }
+
+/* --- --- Quick Input --- --- */
+.quick-input-widget {
+  border-radius: 0 6px;
+  padding: 4px; }
+
+/* --- --- Scrollbars --- --- */
+.monaco-scrollable-element > .scrollbar > .slider {
+  border-radius: 6px;
+  /*
+      For width and height there are VSCode settings like:
+      - "editor.scrollbar.horizontalScrollbarSize"
+      - "editor.scrollbar.verticalScrollbarSize"
+    */ }

@@ -1,0 +1,93 @@
+$border-radius: 6px;
+/* --- --- Doc Popup Window --- --- */
+
+.monaco-editor .monaco-hover {
+    border-radius: $border-radius;
+    box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    min-width: 600px !important;
+    max-height: 80% !important;
+    max-width: 80% !important;
+}
+
+.monaco-scrollable-element > .scrollbar > .slider {
+    padding: 0 0 0 2px !important;
+    width: 5px !important;
+}
+
+.monaco-editor .monaco-hover .monaco-hover-content {
+    max-height: 600px !important;
+}
+
+/* --- --- IntelliSense Window --- --- */
+
+.monaco-editor .suggest-widget {
+    border-radius: $border-radius;
+    box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+    margin: 4px;
+    padding: 8px;
+    min-width: 550px !important;
+    max-width: 80% !important;
+}
+
+.monaco-editor .overlayWidgets .suggest-details-container {
+    border-radius: $border-radius;
+    box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+    min-width: 300px !important;
+    max-width: 80% !important;
+}
+.monaco-editor .suggest-details {
+    border-radius: $border-radius;
+}
+
+tree > .monaco-list > .monaco-scrollable-element {
+    margin-right: -6px;
+    padding-right: 4px;
+    border-radius: $border-radius;
+}
+
+.monaco-list > .monaco-scrollable-element {
+    border-radius: $border-radius;
+}
+
+.codeActionMenuWidget {
+    border-radius: $border-radius;
+    box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* --- --- Notifications --- --- */
+
+.monaco-workbench > .notifications-center,
+.monaco-workbench > .notifications-toasts,
+.monaco-workbench
+    > .notifications-toasts
+    .notification-toast-container
+    > .notification-toast,
+.monaco-workbench .notifications-list-container .notification-list-item,
+.monaco-list-rows,
+.notifications-list-container {
+    border-radius: $border-radius;
+}
+
+.monaco-text-button {
+    border-radius: $border-radius / 2;
+}
+
+/* --- --- Quick Input --- --- */
+
+.quick-input-widget {
+    border-radius: 0 $border-radius;
+    padding: 4px;
+}
+
+/* --- --- Scrollbars --- --- */
+
+.monaco-scrollable-element > .scrollbar > .slider {
+    border-radius: $border-radius;
+    /*
+      For width and height there are VSCode settings like:
+      - "editor.scrollbar.horizontalScrollbarSize"
+      - "editor.scrollbar.verticalScrollbarSize"
+    */
+}
