@@ -1,17 +1,16 @@
 local wezterm = require('wezterm')
-local utils = require('utils')
 --[]
 local config = {
     color_scheme = 'carbonfox',
     hide_tab_bar_if_only_one_tab = true,
-    window_background_opacity = 0.9,
+    window_background_opacity = 0.5,
     colors = {
         background = 'black',
     },
     font = wezterm.font_with_fallback {
         {
             family = 'Cascadia Code PL',
-            harfbuzz_features = { --[[ 'ss01' ,]] 'ss02', 'ss20' },
+            harfbuzz_features = { 'ss01', 'ss02', 'ss20' },
         },
         'Symbols Nerd Font',
         'nonicons'
