@@ -18,6 +18,7 @@ set -x QT_QPA_PLATFORMTHEME qt5ct
 set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x OMNISHARPHOME "$XDG_CONFIG_HOME"/omnisharp
 set -x PARALLEL_HOME "$XDG_CONFIG_HOME"/parallel
+set -x NIMBLE_DIR "$XDG_DATA_HOME/nimble"
 set -x BUN_FORCE_HMR 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LS_COLORS "$(vivid generate nord)"

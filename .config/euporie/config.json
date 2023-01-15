@@ -3,5 +3,15 @@
   "syntax_theme": "one-dark",
   "autocomplete": true,
   "always_show_tab_bar": false,
-  "color_scheme": "custom"
+  "color_scheme": "custom",
+  "notebook": {
+    "color_scheme": "black",
+    "syntax_theme": "native",
+    "background_pattern": 1,
+    "show_cell_borders": true,
+    "expand": true,
+    "line_numbers": true,
+    "always_show_tab_bar": false,
+    "autoinspect": true
+  }
 }
