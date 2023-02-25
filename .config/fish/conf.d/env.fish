@@ -52,6 +52,7 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 fish_add_path -aP $ANDROID_SDK_ROOT/emulator
 fish_add_path -aP $ANDROID_SDK_ROOT/platform-tools
+# fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
 fish_add_path -aP $XDG_DATA_HOME/npm/bin
