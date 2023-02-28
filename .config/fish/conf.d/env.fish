@@ -61,3 +61,4 @@ fish_add_path -aP ~/Applications/bat-extras/src
 fish_add_path -aP ~/Applications/omnisharp
 fish_add_path -aP ~/.bun/bin
 fish_add_path -aP $XDG_DATA_HOME/nvim/mason/bin
+fish_add_path -aP $XDG_DATA_HOME/go/bin
