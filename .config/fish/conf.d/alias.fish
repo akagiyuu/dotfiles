@@ -1,12 +1,8 @@
-alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias icat='kitty +kitten icat'
 alias ls='exa --icons -l'
 alias f='fzf'
-alias vim='nvim'
 alias v='nvim'
 alias n='nnn -eH'
 alias N='sudo -E nnn -deH'
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-alias note='nvim ~/Note/main.norg'
 alias tree='erdtree'
-alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:latest'

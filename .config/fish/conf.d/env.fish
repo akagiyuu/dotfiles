@@ -1,5 +1,6 @@
 set fish_greeting
 
+set -x CARGO_REGISTRIES_CRATES_IO_PROTOCOL sparse
 set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -x GOPATH "$XDG_DATA_HOME"/go
 set -x JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
@@ -62,3 +63,4 @@ fish_add_path -aP ~/Applications/omnisharp
 fish_add_path -aP ~/.bun/bin
 fish_add_path -aP $XDG_DATA_HOME/nvim/mason/bin
 fish_add_path -aP $XDG_DATA_HOME/go/bin
+fish_add_path -aP $XDG_CONFIG_HOME/emacs/bin

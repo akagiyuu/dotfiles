@@ -27,3 +27,6 @@
 [submodule ".config/awesome"]
 	path = .config/awesome
 	url = https://github.com/AkagiYuu/awesomewm-config
+[submodule ".config/emacs"]
+	path = .config/emacs
+	url = https://github.com/doomemacs/doomemacs
