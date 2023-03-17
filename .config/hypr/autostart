@@ -6,10 +6,13 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 config=$HOME/.config/hypr
 scripts=$config/scripts
-$scripts/wall $HOME/Pictures/Background/blackhole1.jpg
 
+swww init
 dunst &
 waybar &
 
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export $(dbus-launch)
+
+casio &
+docker restart libreddit &
