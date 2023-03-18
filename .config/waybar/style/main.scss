@@ -1,0 +1,73 @@
+@import "mocha.scss";
+$font: JetBrains Mono, Symbols Nerd Font;
+$border-radius: 5px;
+
+@mixin container($bg: $base, $fg: $text) {
+    margin-top: 6px;
+    margin-left: 8px;
+    padding: 4px 10px;
+    margin-bottom: 0px;
+    border-radius: $border-radius;
+    transition: none;
+    color: $fg;
+    background: $bg;
+}
+
+* {
+    border: none;
+    border-radius: $border-radius;
+    font-family: $font;
+    font-size: 15px;
+    min-height: 10px;
+    color: $text;
+}
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces {
+    @include container($peach);
+}
+
+#window {
+    @include container(transparent, transparent);
+}
+#taskbar button {
+    @include container($mantle);
+}
+#network {
+    @include container($mauve);
+}
+
+#pulseaudio {
+    @include container($yellow);
+}
+
+#clock {
+    @include container($green);
+}
+
+#memory {
+    @include container($teal);
+}
+#cpu {
+    @include container($red);
+}
+#tray {
+    @include container($base);
+}
+#custom-weather {
+    @include container($flamingo);
+}

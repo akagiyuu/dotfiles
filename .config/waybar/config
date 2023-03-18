@@ -1,0 +1,116 @@
+{
+    "layer": "top",
+    "modules-left": [
+        "wlr/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "network",
+        "custom/weather",
+        "pulseaudio",
+        "cpu",
+        "memory"
+    ],
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "  ",
+            "2": " 󰈹 ",
+            "3": " 󰢻 ",
+            "4": " 󰏗 ",
+            "5": "  ",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 16,
+        "icon-theme": "Papirus-Dark",
+        "tooltip-format": "{title}",
+        "on-click": "minimize-raise",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "kitty"
+        ]
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{: %I:%M %p   %d/%m/%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-muted": "{icon} {volume}%",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "network": {
+        "tooltip": false,
+        "format-wifi": "  {essid}",
+        "format-ethernet": ""
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": "󰍛 {}%",
+        "max-length": 10
+    },
+    "custom/pacman": {
+        "format": "{}  ",
+        "interval": 3600,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "signal": 8
+    },
+    "custom/weather": {
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/weather.sh Vietnam",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600
+    }
+}
