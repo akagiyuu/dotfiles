@@ -8,6 +8,7 @@ dunst &
 waybar &
 casio &
 docker restart libreddit &
+ydotoold &
 
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export $(dbus-launch)
