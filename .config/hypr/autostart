@@ -6,7 +6,6 @@ scripts=$config/scripts
 swww init
 dunst &
 waybar &
-casio &
 docker restart libreddit &
 ydotoold &
 
