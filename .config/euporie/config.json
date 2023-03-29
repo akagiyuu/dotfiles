@@ -7,11 +7,13 @@
   "notebook": {
     "color_scheme": "black",
     "syntax_theme": "native",
-    "background_pattern": 1,
+    "background_pattern": 3,
     "show_cell_borders": true,
-    "expand": true,
+    "expand": false,
     "line_numbers": true,
     "always_show_tab_bar": false,
-    "autoinspect": true
+    "autoinspect": true,
+    "edit_mode": "vi",
+    "autocomplete": true
   }
 }

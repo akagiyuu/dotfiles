@@ -10,7 +10,6 @@
     "modules-right": [
         "tray",
         "network",
-        "custom/weather",
         "pulseaudio",
         "cpu",
         "memory"

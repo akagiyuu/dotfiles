@@ -9,6 +9,8 @@ waybar &
 docker restart libreddit &
 ydotoold &
 
+swayidle -w timeout 300 'lock' before-sleep 'lock' &
+
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export $(dbus-launch)
 
