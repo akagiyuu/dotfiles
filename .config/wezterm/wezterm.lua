@@ -2,7 +2,7 @@ local wezterm = require('wezterm')
 require('ui.tab').normal()
 
 return {
-    enable_wayland = false,
+    enable_wayland = true,
     check_for_updates = false,
     front_end = "OpenGL",
     window_background_opacity = 0.9,
