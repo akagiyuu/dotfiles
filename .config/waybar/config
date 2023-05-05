@@ -37,7 +37,8 @@
         "on-click": "minimize-raise",
         "on-click-middle": "close",
         "ignore-list": [
-            "kitty"
+            "kitty",
+            "org.wezfurlong.wezterm"
         ]
     },
     "tray": {
