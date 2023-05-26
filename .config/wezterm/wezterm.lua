@@ -8,7 +8,7 @@ return {
     window_background_opacity = 0.7,
     window_close_confirmation = "NeverPrompt",
     term = 'wezterm',
-    color_scheme = 'carbonfox',
+    color_scheme = 'Builtin Dark',
     colors = { background = '#000000' },
     bold_brightens_ansi_colors = true,
     font = wezterm.font_with_fallback {
@@ -19,7 +19,7 @@ return {
         'Symbols Nerd Font',
     },
     font_size = 11,
-    line_height = 1.2,
+    line_height = 1.3,
     allow_square_glyphs_to_overflow_width = "Never",
     custom_block_glyphs = true,
     default_cursor_style = 'BlinkingBar',

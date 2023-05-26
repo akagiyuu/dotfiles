@@ -49,6 +49,7 @@ set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 # set -x ANDROID_HOME "$XDG_DATA_HOME"/android
 set -x GRADLE_USER_HOME "$XDG_DATA_HOME"/gradle
 # set -x PLATFORMIO_CORE_DIR "$XDG_DATA_HOME"/platformio
+set -x GLAMOUR_STYLE "$HOME/.config/glamour/mocha.json"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 fish_add_path -aP $ANDROID_SDK_ROOT/emulator
