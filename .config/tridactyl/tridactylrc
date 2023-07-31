@@ -14,6 +14,12 @@ bind --mode=input  <C-q> js alert("<C-q> is for quitters.")
 bind --mode=normal <C-q> js alert("<C-q> is for quitters.")
 bind --mode=ex     <C-q> js alert("<C-q> is for quitters.")
 bind --mode=hint   <C-q> js alert("<C-q> is for quitters.")
+unbindurl http://127.0.0.1:7070 r
+unbindurl http://127.0.0.1:7070 o
+unbindurl http://127.0.0.1:7070 j
+unbindurl http://127.0.0.1:7070 k
+unbindurl http://127.0.0.1:7070 h
+unbindurl http://127.0.0.1:7070 l
 
 set smoothscroll true
 set theme quake

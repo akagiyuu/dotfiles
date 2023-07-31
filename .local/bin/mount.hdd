@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo mount /dev/sda1 ~/Data
+sudo mount /dev/sdb1 ~/Data

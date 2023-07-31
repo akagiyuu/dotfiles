@@ -1,5 +1,7 @@
 {
     "layer": "top",
+    "margin-left": 5,
+    "margin-right": 5,
     "modules-left": [
         "wlr/workspaces",
         "wlr/taskbar"
@@ -18,11 +20,6 @@
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
-            "1": "  ",
-            "2": " 󰈹 ",
-            "3": " 󰢻 ",
-            "4": " 󰏗 ",
-            "5": "  ",
             "urgent": "",
             "active": "",
             "default": ""
