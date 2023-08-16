@@ -12,17 +12,24 @@
     "modules-right": [
         "tray",
         "network",
+        "custom/weather",
         "pulseaudio",
         "cpu",
-        "memory"
+        "memory",
     ],
     "wlr/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
+            "default": "",
+            "active": "󱓻",
+            "urgent": "󱓻",
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
         },
         "sort-by-number": true
     },
@@ -104,10 +111,10 @@
         "signal": 8
     },
     "custom/weather": {
-        "exec": "$XDG_CONFIG_HOME/waybar/scripts/weather.sh Vietnam",
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/weather.sh quận+10",
         "return-type": "json",
         "format": "{}",
         "tooltip": true,
-        "interval": 3600
+        "interval": 36000
     }
 }

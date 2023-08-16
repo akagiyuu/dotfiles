@@ -1,5 +1,5 @@
 @import "mocha.scss";
-$font: JetBrains Mono, Symbols Nerd Font;
+$font: Cartograph CF, Symbols Nerd Font;
 $border-radius: 5px;
 
 @mixin container($bg: $base, $fg: $text) {
@@ -40,6 +40,36 @@ window#waybar.hidden {
 #workspaces {
     @include container($peach);
 }
+@keyframes button_activate {
+	from { opacity: 0.3 }
+	to { opacity: 1.0; }
+}
+
+#workspaces button {
+	border: none;
+	color:  #d4d2a9;
+	// padding: 3px;
+	background: transparent;
+	box-shadow: none;
+    &.active {
+	    color:  #81A1C1;
+	    background: radial-gradient(circle, rgba(20, 48, 187, 0.699) 5%, rgba(36, 39, 54, 0.5) 18%, rgba(132,129,156,0) 23%, rgba(70, 76, 98, 0.201) 24%, rgba(132,129,156,0) 30%);
+	    animation: button_activate .2s ease-in-out;
+        &:hover { background: inherit; }
+    }
+    &.urgent {
+        color:  #fa9f8e;
+        background: radial-gradient(circle, rgba(25, 79, 255, 0.3) 20%, rgba(132, 129, 156, 0) 30%);
+        &:hover { background: inherit; }
+    }
+    &.persistent { color:  #85909e; }
+    &:hover {
+	    border: none;
+	    background: radial-gradient(circle, rgba(25, 79, 255, 0.1) 20%, rgba(132,129,156,0) 30%);
+    }
+}
+
+
 
 #window {
     @include container(transparent, transparent);

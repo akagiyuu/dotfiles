@@ -20,7 +20,7 @@ return {
         'Symbols Nerd Font',
     },
     font_size = 11,
-    line_height = 1.3,
+    line_height = 1.5,
     allow_square_glyphs_to_overflow_width = "Never",
     custom_block_glyphs = true,
     default_cursor_style = 'BlinkingBar',

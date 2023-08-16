@@ -3,11 +3,9 @@
 config=$HOME/.config/hypr
 scripts=$config/scripts
 
-swww init
+swww init &
 dunst &
 waybar &
-yarr &
-docker restart libreddit &
 ydotoold &
 
 swayidle -w timeout 300 'lock' timeout 360 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'lock' &

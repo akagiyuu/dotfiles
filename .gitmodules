@@ -26,7 +26,7 @@
 	branch = new-keygrabber
 [submodule ".config/awesome"]
 	path = .config/awesome
-	url = https://github.com/AkagiYuu/awesomewm-config
+	url = https://github.com/akagiyuu/awesomewm-config
 [submodule ".config/emacs"]
 	path = .config/emacs
 	url = https://github.com/doomemacs/doomemacs
