@@ -1,10 +1,12 @@
 starship init fish | source
 zoxide init fish --cmd cd | source
-cod init %self fish | source
-if [ "$TERM_PROGRAM" = vscode ]
-    source "/opt/visual-studio-code/resources/app/out/vs/workbench/contrib/terminal/browser/media/shellIntegration.fish"
-end
+cod init $fish_pid fish | source
 
 if status is-interactive
-    colorscript random
+    pokeget random
+    atuin init fish | source
 end
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true

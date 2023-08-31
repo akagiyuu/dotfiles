@@ -4,7 +4,6 @@ set -x CARGO_REGISTRIES_CRATES_IO_PROTOCOL sparse
 set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -x GOPATH "$XDG_DATA_HOME"/go
 set -x JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
-set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 set -x RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -x DOT_SAGE "$XDG_CONFIG_HOME"/sage
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
@@ -13,14 +12,13 @@ set -x NUGET_PACKAGES "$XDG_CACHE_HOME"/NuGetPackages
 set -x PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
 set -Ux BUN_INSTALL ~/.bun
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
-set -x GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
-set -x QT_QPA_PLATFORMTHEME qt5ct
 set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x OMNISHARPHOME "$XDG_CONFIG_HOME"/omnisharp
 set -x PARALLEL_HOME "$XDG_CONFIG_HOME"/parallel
 set -x NIMBLE_DIR "$XDG_DATA_HOME/nimble"
 set -x BUN_FORCE_HMR 1
+set -x MANROFFOPT '-c'
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LS_COLORS "$(vivid generate nord)"
 set -x EDITOR nvim
@@ -59,9 +57,6 @@ fish_add_path -aP $ANDROID_SDK_ROOT/platform-tools
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts
 fish_add_path -aP $XDG_DATA_HOME/npm/bin
 fish_add_path -aP $CARGO_HOME/bin
-fish_add_path -aP ~/Applications/bat-extras/src
-fish_add_path -aP ~/Applications/omnisharp
 fish_add_path -aP ~/.bun/bin
 fish_add_path -aP $XDG_DATA_HOME/nvim/mason/bin
 fish_add_path -aP $XDG_DATA_HOME/go/bin
-fish_add_path -aP $XDG_CONFIG_HOME/emacs/bin

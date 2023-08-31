@@ -1,8 +1,5 @@
 #!/usr/bin/bash
 
-config=$HOME/.config/hypr
-scripts=$config/scripts
-
 swww init &
 dunst &
 waybar &
