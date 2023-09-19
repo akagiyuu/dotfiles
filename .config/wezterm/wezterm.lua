@@ -16,6 +16,7 @@ return {
             family = 'Cascadia Code PL',
             harfbuzz_features = { 'ss01', 'ss02', 'ss20' },
         },
+        -- 'Cartograph CF Heavy',
         -- 'Cascursive',
         'Symbols Nerd Font',
     },

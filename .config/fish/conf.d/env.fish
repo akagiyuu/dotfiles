@@ -1,6 +1,5 @@
 set fish_greeting
 
-set -x CARGO_REGISTRIES_CRATES_IO_PROTOCOL sparse
 set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -x GOPATH "$XDG_DATA_HOME"/go
 set -x JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
@@ -17,7 +16,6 @@ set -x GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -x OMNISHARPHOME "$XDG_CONFIG_HOME"/omnisharp
 set -x PARALLEL_HOME "$XDG_CONFIG_HOME"/parallel
 set -x NIMBLE_DIR "$XDG_DATA_HOME/nimble"
-set -x BUN_FORCE_HMR 1
 set -x MANROFFOPT '-c'
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LS_COLORS "$(vivid generate nord)"
@@ -42,16 +40,12 @@ set -x FZF_DEFAULT_OPTS "
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 # set -x DOTNET_JitDisasm Main
-set -x BORG_REPO "$HOME/Data/Backup"
-set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
-# set -x ANDROID_HOME "$XDG_DATA_HOME"/android
-set -x GRADLE_USER_HOME "$XDG_DATA_HOME"/gradle
-# set -x PLATFORMIO_CORE_DIR "$XDG_DATA_HOME"/platformio
 set -x GLAMOUR_STYLE "$HOME/.config/glamour/mocha.json"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+set -x TERMINFO "$XDG_DATA_HOME"/terminfo
+set -x TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 
-fish_add_path -aP $ANDROID_SDK_ROOT/emulator
-fish_add_path -aP $ANDROID_SDK_ROOT/platform-tools
 # fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 
 fish_add_path -aP ~/.local/bin ~/Applications ~/Scripts

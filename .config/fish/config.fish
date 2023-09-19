@@ -3,7 +3,7 @@ zoxide init fish --cmd cd | source
 cod init $fish_pid fish | source
 
 if status is-interactive
-    pokeget random
+    colorscript random
     atuin init fish | source
 end
 

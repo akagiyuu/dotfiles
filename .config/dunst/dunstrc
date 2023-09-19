@@ -39,7 +39,7 @@
     class = Dunst
 
     corner_radius = 10
-    timeout = 5
+    timeout = 0
 
 [urgency_low]
     background = "#000000CC"
