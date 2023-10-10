@@ -6,7 +6,5 @@ vim.api.nvim_create_autocmd('User', {
     callback = function()
         require('config.keymap')
         require('config.autocmd')
-
-        vim.cmd.rshada()
     end,
 })
