@@ -101,3 +101,6 @@ window#waybar.hidden {
 #custom-weather {
     @include container($flamingo);
 }
+#custom-notification {
+    @include container($flamingo);
+}

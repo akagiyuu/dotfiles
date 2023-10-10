@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 swww init &
-dunst &
+swaync &
 waybar &
 ydotoold &
 

@@ -45,6 +45,8 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 set -x TERMINFO "$XDG_DATA_HOME"/terminfo
 set -x TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
+export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git cargo fetch
+export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git cargo upgrade
 
 # fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 
