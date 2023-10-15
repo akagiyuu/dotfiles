@@ -1,5 +1,5 @@
 local wezterm = require('wezterm')
-require('ui.tab').normal()
+-- require('ui.tab').normal()
 
 return {
     enable_wayland = true,
@@ -8,7 +8,7 @@ return {
     window_background_opacity = 0.7,
     window_close_confirmation = "NeverPrompt",
     term = 'wezterm',
-    color_scheme = 'Builtin Dark',
+    color_scheme = 'carbonfox',
     colors = { background = '#000000' },
     bold_brightens_ansi_colors = true,
     font = wezterm.font_with_fallback {
