@@ -1,0 +1,6 @@
+[manager]
+syntect_theme = "/home/yuu/.config/bat/themes/catppuccin.tmTheme"
+
+[status]
+separator_open  = ""
+separator_close = ""
