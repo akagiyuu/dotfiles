@@ -1,6 +1,7 @@
 local wezterm = require('wezterm')
 -- require('ui.tab').normal()
 
+
 return {
     enable_wayland = true,
     check_for_updates = false,
@@ -13,9 +14,13 @@ return {
     bold_brightens_ansi_colors = true,
     font = wezterm.font_with_fallback {
         {
-            family = 'Cascadia Code PL',
-            harfbuzz_features = { 'ss01', 'ss02', 'ss20' },
+            family = "Monaspace Radon",
+            harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'dlig', 'calt' },
         },
+        -- {
+        --     family = 'Cascadia Code PL',
+        --     harfbuzz_features = { 'ss01', 'ss02', 'ss20' },
+        -- },
         -- 'Cartograph CF Heavy',
         -- 'Cascursive',
         'Symbols Nerd Font',
@@ -41,3 +46,4 @@ return {
     keys = require('keys'),
     mouse_bindings = require('mouse_bindings'),
 }
+
