@@ -15,7 +15,6 @@
         "pulseaudio",
         "cpu",
         "memory",
-        "custom/notification"
     ],
     "hyprland/workspaces": {
         "format": "{icon}",
