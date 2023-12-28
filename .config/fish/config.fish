@@ -1,6 +1,5 @@
 starship init fish | source
 zoxide init fish --cmd cd | source
-cod init $fish_pid fish | source
 
 if status is-interactive
     colorscript random

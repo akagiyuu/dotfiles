@@ -1,5 +1,7 @@
 set fish_greeting
 
+set -x OPAMROOT "$XDG_DATA_HOME/opam"
+set -x SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -x GOPATH "$XDG_DATA_HOME"/go
 set -x JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
