@@ -1,7 +1,7 @@
 sanitize tridactyllocal tridactylsync
 
-color quake
-set theme quake
+colors kanagawa
+set theme kanagawa
 
 set scrollduration 250
 
@@ -22,7 +22,7 @@ unbindurl http://127.0.0.1:7070 h
 unbindurl http://127.0.0.1:7070 l
 
 set smoothscroll true
-set theme quake
+set theme kanagawa
 
 autocmd DocStart mathway.com mode ignore
 
