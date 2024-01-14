@@ -42,4 +42,4 @@ SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/yuu/\x2elocal/bin\x1e/home/yuu/Applications\x1e/home/yuu/Scripts\x1e/home/yuu/\x2elocal/share/npm/bin\x1e/home/yuu/\x2elocal/share/cargo/bin\x1e/home/yuu/Applications/bat\x2dextras/src\x1e/home/yuu/Applications/omnisharp
+SETUVAR fish_user_paths:/home/yuu/\x2elocal/bin/argc\x2dcompletions/bin\x1e/home/yuu/\x2elocal/bin\x1e/home/yuu/Applications\x1e/home/yuu/Scripts\x1e/home/yuu/\x2elocal/share/npm/bin\x1e/home/yuu/\x2elocal/share/cargo/bin\x1e/home/yuu/Applications/bat\x2dextras/src\x1e/home/yuu/Applications/omnisharp
