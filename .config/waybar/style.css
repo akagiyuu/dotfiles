@@ -8,26 +8,22 @@
   border: none;
   border-radius: 5px;
   font-family: Monaspace Radon, Symbols Nerd Font;
-  font-size: 15px;
-  min-height: 10px;
-  color: #161320;
-}
+  font-size: 14px;
+  min-height: 6px;
+  color: #161320; }
 
 button {
   /* Use box-shadow instead of border so the text isn't offset */
   box-shadow: inset 0 -3px transparent;
   /* Avoid rounded borders under each button name */
   border: none;
-  border-radius: 0;
-}
+  border-radius: 0; }
 
 window#waybar {
-  background: transparent;
-}
+  background: transparent; }
 
 window#waybar.hidden {
-  opacity: 0.2;
-}
+  opacity: 0.2; }
 
 #workspaces {
   margin-top: 6px;
@@ -37,45 +33,35 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #fab387;
-}
+  background: #fab387; }
 
 @keyframes button_activate {
   from {
-    opacity: 0.3;
-  }
+    opacity: 0.3; }
   to {
-    opacity: 1;
-  }
-}
+    opacity: 1.0; } }
+
 #workspaces button {
   border: none;
   color: #d4d2a9;
   background: transparent;
-  box-shadow: none;
-}
-#workspaces button.active {
-  color: #81A1C1;
-  background: radial-gradient(circle, rgba(20, 48, 187, 0.699) 5%, rgba(36, 39, 54, 0.5) 18%, rgba(132, 129, 156, 0) 23%, rgba(70, 76, 98, 0.201) 24%, rgba(132, 129, 156, 0) 30%);
-  animation: button_activate 0.2s ease-in-out;
-}
-#workspaces button.active:hover {
-  background: inherit;
-}
-#workspaces button.urgent {
-  color: #fa9f8e;
-  background: radial-gradient(circle, rgba(25, 79, 255, 0.3) 20%, rgba(132, 129, 156, 0) 30%);
-}
-#workspaces button.urgent:hover {
-  background: inherit;
-}
-#workspaces button.persistent {
-  color: #85909e;
-}
-#workspaces button:hover {
-  border: none;
-  background: radial-gradient(circle, rgba(25, 79, 255, 0.1) 20%, rgba(132, 129, 156, 0) 30%);
-}
+  box-shadow: none; }
+  #workspaces button.active {
+    color: #81A1C1;
+    background: radial-gradient(circle, rgba(20, 48, 187, 0.699) 5%, rgba(36, 39, 54, 0.5) 18%, rgba(132, 129, 156, 0) 23%, rgba(70, 76, 98, 0.201) 24%, rgba(132, 129, 156, 0) 30%);
+    animation: button_activate .2s ease-in-out; }
+    #workspaces button.active:hover {
+      background: inherit; }
+  #workspaces button.urgent {
+    color: #fa9f8e;
+    background: radial-gradient(circle, rgba(25, 79, 255, 0.3) 20%, rgba(132, 129, 156, 0) 30%); }
+    #workspaces button.urgent:hover {
+      background: inherit; }
+  #workspaces button.persistent {
+    color: #85909e; }
+  #workspaces button:hover {
+    border: none;
+    background: radial-gradient(circle, rgba(25, 79, 255, 0.1) 20%, rgba(132, 129, 156, 0) 30%); }
 
 #window {
   margin-top: 6px;
@@ -85,8 +71,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: transparent;
-  background: transparent;
-}
+  background: transparent; }
 
 #taskbar button {
   margin-top: 6px;
@@ -96,8 +81,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #181825;
-}
+  background: #181825; }
 
 #network {
   margin-top: 6px;
@@ -107,8 +91,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #cba6f7;
-}
+  background: #cba6f7; }
 
 #pulseaudio {
   margin-top: 6px;
@@ -118,8 +101,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #f9e2af;
-}
+  background: #f9e2af; }
 
 #clock {
   margin-top: 6px;
@@ -129,8 +111,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #a6e3a1;
-}
+  background: #a6e3a1; }
 
 #memory {
   margin-top: 6px;
@@ -140,8 +121,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #94e2d5;
-}
+  background: #94e2d5; }
 
 #cpu {
   margin-top: 6px;
@@ -151,8 +131,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #f38ba8;
-}
+  background: #f38ba8; }
 
 #tray {
   margin-top: 6px;
@@ -162,8 +141,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #1e1e2e;
-}
+  background: #1e1e2e; }
 
 #custom-weather {
   margin-top: 6px;
@@ -173,8 +151,7 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #f2cdcd;
-}
+  background: #f2cdcd; }
 
 #custom-notification {
   margin-top: 6px;
@@ -184,7 +161,4 @@ window#waybar.hidden {
   border-radius: 5px;
   transition: none;
   color: #161320;
-  background: #f2cdcd;
-}
-
-/*# sourceMappingURL=style.css.map */
+  background: #f2cdcd; }

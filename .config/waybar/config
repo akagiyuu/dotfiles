@@ -24,7 +24,7 @@
             "active": "󱓻",
             "urgent": "󱓻",
         },
-        "persistent_workspaces": {
+        "persistent-workspaces": {
             "1": [],
             "2": [],
             "3": [],
@@ -34,14 +34,14 @@
     },
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 16,
+        "icon-size": 14,
         "icon-theme": "Papirus-Dark",
         "tooltip-format": "{title}",
         "on-click": "minimize-raise",
         "on-click-middle": "close",
     },
     "tray": {
-        "icon-size": 18,
+        "icon-size": 14,
         "spacing": 10
     },
     "clock": {
