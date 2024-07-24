@@ -3,7 +3,7 @@ local wezterm = require('wezterm')
 
 
 return {
-    enable_wayland = true,
+    enable_wayland = false,
     check_for_updates = false,
     front_end = 'OpenGL',
     window_background_opacity = 0.7,
@@ -14,7 +14,7 @@ return {
     bold_brightens_ansi_colors = true,
     font = wezterm.font_with_fallback {
         {
-            family = "Monaspace Radon",
+            family = "Monaspace Krypton",
             harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'dlig', 'calt' },
         },
         -- {
@@ -26,7 +26,7 @@ return {
         'Symbols Nerd Font',
     },
     font_size = 11,
-    line_height = 1.5,
+    line_height = 1.4,
     allow_square_glyphs_to_overflow_width = "Never",
     custom_block_glyphs = true,
     default_cursor_style = 'BlinkingBar',
