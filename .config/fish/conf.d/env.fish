@@ -43,12 +43,15 @@ set -x FZF_DEFAULT_OPTS "
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 # set -x DOTNET_JitDisasm Main
 set -x GLAMOUR_STYLE "$HOME/.config/glamour/mocha.json"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 set -x TERMINFO "$XDG_DATA_HOME"/terminfo
 set -x TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git cargo fetch
 export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git cargo upgrade
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
+export KERAS_HOME="$XDG_STATE_HOME/keras"
+export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 
 # fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 

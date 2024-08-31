@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export BUN_INSTALL:/home/yuu/\x2ebun
+SETUVAR --export PYENV_ROOT:/home/yuu/\x2epyenv
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:6c7086
 SETUVAR fish_color_cancel:f38ba8

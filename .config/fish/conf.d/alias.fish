@@ -7,3 +7,4 @@ alias y='yazi'
 alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:latest'
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'

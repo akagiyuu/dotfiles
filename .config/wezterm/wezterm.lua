@@ -3,7 +3,7 @@ local wezterm = require('wezterm')
 
 
 return {
-    enable_wayland = false,
+    enable_wayland = true,
     check_for_updates = false,
     front_end = 'OpenGL',
     window_background_opacity = 0.7,
