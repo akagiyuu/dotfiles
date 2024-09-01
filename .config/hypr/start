@@ -1,12 +1,11 @@
 #!/usr/bin/bash
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-swww init &
+swww-daemon &
 dunst &
 waybar &
-ydotoold &
-
-swayidle -w timeout 300 'lock' timeout 360 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'lock' &
+hypridle &
 
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export $(dbus-launch)
+ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr
