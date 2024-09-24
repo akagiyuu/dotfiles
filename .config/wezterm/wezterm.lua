@@ -1,7 +1,6 @@
 local wezterm = require('wezterm')
 -- require('ui.tab').normal()
 
-
 return {
     enable_wayland = true,
     check_for_updates = false,
@@ -13,10 +12,11 @@ return {
     colors = { background = '#000000' },
     bold_brightens_ansi_colors = true,
     font = wezterm.font_with_fallback {
-        {
-            family = "Monaspace Krypton",
-            harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'dlig', 'calt' },
-        },
+        "JetBrains Mono",
+        -- {
+        --     family = "Monaspace Krypton",
+        --     harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'dlig', 'calt' },
+        -- },
         -- {
         --     family = 'Cascadia Code PL',
         --     harfbuzz_features = { 'ss01', 'ss02', 'ss20' },
@@ -26,7 +26,7 @@ return {
         'Symbols Nerd Font',
     },
     font_size = 11,
-    line_height = 1.4,
+    line_height = 1.3,
     allow_square_glyphs_to_overflow_width = "Never",
     custom_block_glyphs = true,
     default_cursor_style = 'BlinkingBar',
@@ -40,7 +40,7 @@ return {
         bottom = 0,
     },
     hide_tab_bar_if_only_one_tab = true,
-    underline_position = "500%",
+    underline_position = "200%",
     -- underline_thickness = 2,
     detect_password_input = true,
     keys = require('keys'),

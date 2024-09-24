@@ -52,6 +52,7 @@ export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 export KERAS_HOME="$XDG_STATE_HOME/keras"
 export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 
@@ -61,3 +62,4 @@ fish_add_path -aP $CARGO_HOME/bin
 fish_add_path -aP ~/.bun/bin
 fish_add_path -aP $XDG_DATA_HOME/nvim/mason/bin
 fish_add_path -aP $XDG_DATA_HOME/go/bin
+fish_add_path -aP /opt/cuda/bin
