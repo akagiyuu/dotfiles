@@ -2,7 +2,7 @@
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 swww-daemon &
-agsv1 run &
+waybar &
 hypridle &
 
 eval $(/usr/bin/gnome-keyring-daemon --start)
