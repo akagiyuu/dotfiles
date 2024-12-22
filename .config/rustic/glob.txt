@@ -1,0 +1,7 @@
+!**/.vscode
+!**/data
+!**/node_modules
+!**/target
+!**/*cache*
+!**/.steam
+!**/Steam
