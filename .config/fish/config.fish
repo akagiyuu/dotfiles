@@ -1,18 +1,14 @@
-starship init fish | source
-zoxide init fish --cmd cd | source
-
 if status is-interactive
+    starship init fish | source
+    zoxide init fish --cmd cd | source
     colorscript random
     atuin init fish | source
     source ~/miniconda3/etc/fish/conf.d/conda.fish
-    # pyenv virtualenv-init - | source
 end
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
-
-# pyenv init - | source
 
 # pnpm
 set -gx PNPM_HOME "/home/yuu/.local/share/pnpm"
