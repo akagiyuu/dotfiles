@@ -1,5 +1,4 @@
 local wezterm = require('wezterm')
--- require('ui.tab').normal()
 
 return {
     enable_wayland = true,
@@ -8,7 +7,7 @@ return {
     window_background_opacity = 0.7,
     window_close_confirmation = "NeverPrompt",
     term = 'wezterm',
-    color_scheme = 'carbonfox',
+    color_scheme = "Catppuccin Mocha",
     colors = { background = '#000000' },
     bold_brightens_ansi_colors = true,
     font = wezterm.font_with_fallback {
@@ -32,7 +31,7 @@ return {
     default_cursor_style = 'BlinkingBar',
     cursor_blink_ease_in = "Constant",
     cursor_blink_ease_out = "Constant",
-    enable_scroll_bar = true,
+    enable_scroll_bar = false,
     window_padding = {
         left = 0,
         right = 0,
@@ -46,4 +45,3 @@ return {
     keys = require('keys'),
     mouse_bindings = require('mouse_bindings'),
 }
-
