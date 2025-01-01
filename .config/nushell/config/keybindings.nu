@@ -11,32 +11,6 @@ export def get-keybindings [] {
             }
         }
         {
-            name: completion_menu
-            modifier: none
-            keycode: tab
-            mode: [emacs vi_normal vi_insert]
-            event: {
-                until: [
-                    { send: menu name: completion_menu }
-                    { send: menunext }
-                ]
-            }
-        }
-        {
-            name: completion_previous_menu
-            modifier: shift
-            keycode: backtab
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: menuprevious }
-        }
-        {
-            name: history_menu
-            modifier: control
-            keycode: char_r
-            mode: [emacs, vi_insert, vi_normal]
-            event: { send: menu name: history_menu }
-        }
-        {
             name: help_menu
             modifier: none
             keycode: f1
@@ -65,13 +39,6 @@ export def get-keybindings [] {
             event: { send: ctrlc }
         }
         {
-            name: quit_shell
-            modifier: control
-            keycode: char_d
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: ctrld }
-        }
-        {
             name: clear_screen
             modifier: control
             keycode: char_l
@@ -79,88 +46,11 @@ export def get-keybindings [] {
             event: { send: clearscreen }
         }
         {
-            name: search_history
-            modifier: control
-            keycode: char_r
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: searchhistory }
-        }
-        {
             name: open_command_editor
             modifier: control
             keycode: char_o
             mode: [emacs, vi_normal, vi_insert]
             event: { send: openeditor }
-        }
-        {
-            name: move_up
-            modifier: none
-            keycode: up
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                until: [
-                    {send: menuup}
-                    {send: up}
-                ]
-            }
-        }
-        {
-            name: move_down
-            modifier: none
-            keycode: down
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                until: [
-                    {send: menudown}
-                    {send: down}
-                ]
-            }
-        }
-        {
-            name: move_left
-            modifier: none
-            keycode: left
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                until: [
-                    {send: menuleft}
-                    {send: left}
-                ]
-            }
-        }
-        {
-            name: move_right_or_take_history_hint
-            modifier: none
-            keycode: right
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                until: [
-                    {send: historyhintcomplete}
-                    {send: menuright}
-                    {send: right}
-                ]
-            }
-        }
-        {
-            name: delete_one_character_backward
-            modifier: none
-            keycode: backspace
-            mode: [emacs, vi_insert]
-            event: {edit: backspace}
-        }
-        {
-            name: delete_one_character_forward
-            modifier: none
-            keycode: delete
-            mode: [emacs, vi_insert]
-            event: {edit: delete}
-        }
-        {
-            name: move_left
-            modifier: none
-            keycode: backspace
-            mode: vi_normal
-            event: {edit: moveleft}
         }
     ]
 }

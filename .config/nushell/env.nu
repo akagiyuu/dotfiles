@@ -73,11 +73,8 @@ load-env {
     --color=bg+:-1,bg:-1,spinner:#f5e0dc,hl:#f38ba8
     --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
     --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-    #DOTNET_JitDisasm: Main
-    BORG_REPO: $"($env.HOME)/Data/Backup"
     GRADLE_USER_HOME: $"($env.XDG_DATA_HOME)/gradle"
     GLAMOUR_STYLE: $"($env.HOME)/.config/glamour/mocha.json"
-    #_JAVA_OPTIONS: $"-Djava.util.prefs.userRoot== ($env.XDG_CONFIG_HOME)/java"
 }
 
 $env.PATH = ($env.PATH | split row (char esep) | prepend [
@@ -87,6 +84,5 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend [
     $"($env.XDG_DATA_HOME)/npm/bin"
     $"($env.CARGO_HOME)/bin"
     ~/.bun/bin
-    $"($env.XDG_DATA_HOME)/nvim/mason/bin"
     $"($env.XDG_DATA_HOME)/go/bin"
 ])

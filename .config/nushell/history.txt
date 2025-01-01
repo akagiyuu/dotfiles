@@ -1,0 +1,119 @@
+echo $env.CARGO_HOME
+cargo list
+cargo install --list
+v config/keybindings.nu
+(http get https://api.chucknorris.io/jokes/random).value
+(http get https://api.chucknorris.io/jokes/random)
+v config/keybindings.nu
+$env.ATUIN_SESSION
+help http
+help http get
+help http get | explore 
+help http get
+help http get | highlight 
+help http get
+help http get | highlight 
+ps | where cpu > 0 | sort-by cpu | reverse 
+btm
+df -h
+df -h | str replace "Mounted on" "Mounted"
+df -h | str replace "Mounted on" "Mounted" | detect columns 
+cargo search shell
+cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}" | str trim
+v config.nu
+cargo search shells
+cargo search shells --limit 10
+v config/function.nu
+dict test
+dictionary alacritty
+dictionary hello
+v config/function.nu
+ls -d|where type == dir|sort-by size|reverse|format filesize GB size
+cd Code
+ls -d|where type == dir|sort-by size|reverse|format filesize GB size
+ls -d 
+cd nushell
+v config/function.nu
+cd nushell
+v config/function.nu
+rg -c Vlaue
+rg -c Value
+rg "test"
+bits and 
+5 | bits and 4
+ls
+ls | histogram 
+ls | get size | histogram 
+4556|fmt
+is-admin 
+version
+cd sqli
+cd sql-race
+open score.db | schema
+open score.db
+open score.db | get name
+open score.db | get scores
+open score.db | get scores | schema
+open score.db | schema
+open score.db | schema | get mains
+open score.db | schema 
+open score.db | schema | get tables
+open score.db | schema | get tables.scores
+open score.db | schema | get tables.scores.columns
+ast
+debug info
+debug info | flatten 
+view source
+pwd
+banner
+du
+cd Code
+du
+"test" | decode base64 
+"test" | decode base64
+"b5eb2d" | encode base64 
+"test" | decode base64 | into string 
+cal
+seq char 
+seq 1 5
+math sin 1 4
+math sin 3.14
+3.14 | math sin
+tutor
+tutor begin
+port
+ansi gradient 
+input listen 
+input list 
+input list ["a", "b"]
+["a", "b"] | input list
+term
+ulimit
+whoami
+gstat 
+random 
+random bool 
+random binary 
+random binary  10
+random dice 
+random uuid 
+ls | grid
+ls
+ls | grid
+ls | table
+ls | table --collapse 
+ls | table --expand 
+ls | table --abbreviated 
+ls | table --abbreviated 10
+ls | table --list 
+ls | table --flatten 
+cd nushell
+gitui
+git pull
+cd yazi
+v init.lua
+v yazi.toml
+cd dot
+y
+gitui
+git pull
