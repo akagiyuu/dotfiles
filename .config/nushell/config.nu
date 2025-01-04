@@ -1,13 +1,10 @@
-source 'modules/zoxide.nu'
-source 'modules/zellij.nu'
-
-source 'config/alias.nu'
 source 'config/theme.nu'
 source 'config/function.nu'
 use 'config/completions.nu' get-completions
 use 'config/hooks.nu' get-hooks
 use 'config/menus.nu' get-menus
 use 'config/keybindings.nu' get-keybindings
+use 'modules/task.nu'
 
 $env.config.show_banner = false
 $env.config.rm = { always_trash: false }
@@ -21,5 +18,7 @@ $env.config.keybindings = (get-keybindings)
 
 source 'modules/starship.nu'
 source 'modules/atuin.nu'
+source 'modules/zoxide.nu'
+source 'config/alias.nu'
 
 colorscript random
