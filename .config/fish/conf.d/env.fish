@@ -46,6 +46,15 @@ set -x GLAMOUR_STYLE "$HOME/.config/glamour/mocha.json"
 set -x TERMINFO "$XDG_DATA_HOME"/terminfo
 set -x TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
+
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+set -gx PNPM_HOME "/home/yuu/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+
 export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git cargo fetch
 export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git cargo upgrade
 export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var

@@ -13,6 +13,7 @@ function _autopair_fish_key_bindings --on-variable fish_key_bindings
 
     bind --mode $mode[-1] --erase \177 \b \t
 
+    bind --mode $mode[1] \177 _autopair_backspace # macOS ⌫
     bind --mode $mode[1] \b _autopair_backspace
     bind --mode $mode[1] \t _autopair_tab
 

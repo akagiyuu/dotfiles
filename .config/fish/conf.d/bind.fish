@@ -2,7 +2,6 @@ function fish_user_key_bindings
     fish_vi_key_bindings
 end
 
-
 function __history_previous_command
     switch (commandline -t)
         case "!"
@@ -30,5 +29,3 @@ else
     bind ! __history_previous_command
     bind '$' __history_previous_command_arguments
 end
-
-fzf_key_bindings
