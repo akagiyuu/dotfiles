@@ -18,6 +18,6 @@ append_previewers = [
 ]
 prepend_fetchers = [
     { id   = "mime", if   = "!(mime|dummy)", name = "*", run  = "mime-ext", prio = "high" },
-    { id   = "git", name = "*", run  = "git" },
-    { id   = "git", name = "*/", run  = "git" }
+    # { id   = "git", name = "*", run  = "git" },
+    # { id   = "git", name = "*/", run  = "git" }
 ]

@@ -15,7 +15,7 @@ return {
         'Symbols Nerd Font',
     },
     font_size = 10,
-    line_height = 1.5,
+    line_height = 1.8,
     allow_square_glyphs_to_overflow_width = "Never",
     custom_block_glyphs = true,
     animation_fps = 120,
@@ -29,7 +29,7 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     show_new_tab_button_in_tab_bar = false,
-    underline_position = "200%",
+    underline_position = "350%",
     -- underline_thickness = 2,
     detect_password_input = false,
 }

@@ -1,0 +1,9 @@
+services:
+  yarr:
+    container_name: yarr 
+    image: ghcr.io/wakeful-cloud/yarr:latest
+    ports:
+      - "9000:7070"
+    volumes:
+      - ~/.local/share/yarr:/data
+    restart: unless-stopped

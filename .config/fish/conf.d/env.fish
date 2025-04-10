@@ -46,7 +46,6 @@ set -x GLAMOUR_STYLE "$HOME/.config/glamour/mocha.json"
 set -x TERMINFO "$XDG_DATA_HOME"/terminfo
 set -x TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
-
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
@@ -62,6 +61,9 @@ export KERAS_HOME="$XDG_STATE_HOME/keras"
 export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export ANDROID_HOME="$HOME/Android/Sdk"
+export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 
 # fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 

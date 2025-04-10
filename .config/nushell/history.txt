@@ -975,3 +975,9 @@ cd fish
 v config.fish
 sudo chsh -s /bin/fish yuu
 systemctl --user disable pueued.service
+vim resolv.conf
+vim
+sudo pacman -S vim
+cd /etc
+vim resolv.conf
+reboot

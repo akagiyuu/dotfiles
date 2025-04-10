@@ -3,6 +3,5 @@ if status is-interactive
     zoxide init fish --cmd cd | source
     colorscript random
     atuin init fish | source
-    source ~/miniconda3/etc/fish/conf.d/conda.fish
     fzf_configure_bindings --directory=\cf
 end

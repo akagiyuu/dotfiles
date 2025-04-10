@@ -1,0 +1,7 @@
+services:
+  redlib:
+    container_name: redlib
+    image: quay.io/redlib/redlib:latest
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
