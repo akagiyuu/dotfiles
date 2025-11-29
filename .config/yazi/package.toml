@@ -1,69 +1,24 @@
 [[plugin.deps]]
-use = "Rolv-Apneseth/starship"
-rev = "247f49d"
-hash = "f450a5f0b5d067f1a749dcec92293615"
-
-[[plugin.deps]]
-use = "Reledia/hexyl"
-rev = "39d3d4e"
-hash = "dd624cbaff94af65f39fd86bc57b340"
-
-[[plugin.deps]]
-use = "GrzegorzKozub/mdcat"
-rev = "d3d5089"
-hash = "40c20e6c1085d1f45309b9f148bf4f6e"
-
-[[plugin.deps]]
 use = "AnirudhG07/rich-preview"
-rev = "8be4d27"
-hash = "c9a3d0731e7d7340e2c6d6126b1f3aa3"
+rev = "831234e"
+hash = "ed3363e256e210593f0f8e4cec3e36a9"
 
 [[plugin.deps]]
-use = "KKV9/compress"
-rev = "60b24af"
-hash = "ee025be766240cc98e671754ac836da3"
+use = "Reledia/glow"
+rev = "bd3eaa5"
+hash = "92b5c58159a51c567f82b618cee2b78"
 
 [[plugin.deps]]
-use = "pirafrank/what-size"
-rev = "f08f7f2"
-hash = "6de1e859aa4f9832aa00a1a65e552ea3"
+use = "macydnah/office"
+rev = "41ebef8"
+hash = "5805affd3ae8adcb3c72b6997d21c0a6"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:full-border"
-rev = "7afba3a"
-hash = "3a73613fc702a5f8369791b3401f52f1"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:hide-preview"
-rev = "7afba3a"
-hash = "5be5885898ca9df783bdec0d402bf4b0"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:max-preview"
-rev = "7afba3a"
-hash = "9bc26d10d2f6e2aa93b10905b1b76979"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:mime-ext"
-rev = "7afba3a"
-hash = "db541bb1800060023ee45338d5372920"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "7afba3a"
-hash = "47d8513034b81ee8ae814e36e455bfa7"
-
-[[plugin.deps]]
-use = "Ape/simple-status"
-rev = "3ef1447"
-hash = "68603fdd1dcaf415227e2c77a9317947"
-
-[[plugin.deps]]
-use = "boydaihungst/mediainfo"
-rev = "ddfd5ec"
-hash = "30f1eb92543be9624503cb79d03dbd19"
+use = "Rolv-Apneseth/starship"
+rev = "a63550b"
+hash = "c2021386289a0cbb3e152a052f67c177"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "8458d25"
-hash = "44ab3265147788a4e780b2060341d65e"
+rev = "ba27774"
+hash = "14b111562c00eb1917fe3ca3ae9bb771"

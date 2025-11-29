@@ -1,5 +1,9 @@
 set fish_greeting
 
+set -x XDG_DATA_HOME "$HOME/.local/share"
+set -x XDG_CONFIG_HOME "$HOME/.config"
+set -x XDG_STATE_HOME "$HOME/.local/state"
+set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x OPAMROOT "$XDG_DATA_HOME/opam"
 set -x SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
@@ -62,8 +66,10 @@ export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
-export ANDROID_HOME="$HOME/Android/Sdk"
-export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export COMPOSE_BAKE=true
 
 # fish_add_path -aP $XDG_DATA_HOME/bob/nvim-bin
 

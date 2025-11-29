@@ -1,84 +1,99 @@
+:root {
+  --bg-color:black;
+  --fg-color: white;
+  --primary-color: #89b4fa;
+  --secondary-color: #cba6f7;
+  --border-color: var(--primary-color);
+  --selected-bg-color: var(--primary-color);
+  --selected-fg-color: var(--bg-color);
+}
+
 * {
     all: unset;
     font-size: 1rem;
+    font-family: "JetBrains Mono", 'Symbols Nerd Font', monospace;
 }
 
-#window,
-#match,
-#entry,
-#plugin,
-#main {
-    background: transparent;
+window {
+  background: transparent;
 }
 
-#match.activatable {
-    border-radius: 5px;
-    padding: .3rem .9rem;
-    margin-top: .01rem;
+/* ===== Main container ===== */
+box.main {
+  border-radius: 8px;
+  background-color: color-mix(in srgb, var(--bg-color) 75%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--fg-color) 25%, transparent);
+  padding: 12px; /* add uniform padding around the whole box */
 }
 
-#match.activatable:first-child {
-    margin-top: 9px;
+/* ===== Input field ===== */
+text {
+  font-size: 1.3rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  padding: 5px 10px;
+  min-height: 44px;
+  caret-color: var(--primary-color);
 }
 
-#match.activatable:last-child {
-    margin-bottom: 1px;
+/* ===== List container ===== */
+.matches {
+  background-color: transparent;
 }
 
-#plugin:hover #match.activatable {
-    border-radius: 5px;
-    padding: .3rem;
-    margin-top: .01rem;
-    margin-bottom: 0;
+/* ===== Single match row ===== */
+.match {
+  font-size: 1.1rem;
+  padding: 4px 10px; /* tight vertical spacing */
+  border-radius: 6px;
 }
 
-
-#match:selected {
-    color: @theme_selected_fg_color;
-    background: @theme_selected_bg_color;
-    border-radius: 3px;
+/* Remove default label margins */
+.match * {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
-#entry {
-    border-radius: 8px;
-    margin: .3rem;
-    padding: .6rem 1.0rem;
-    caret-color: white;
-    font-size: 26px;
-    font-weight: 500;
+/* Selected / hover state */
+.match:selected,
+.match:hover {
+  background-color: var(--selected-bg-color);
+  color: var(--selected-fg-color);
 }
 
-list>#plugin {
-    border-top: 1px solid rgba(255, 255, 255, .11);
-    margin: 0.3rem;
-    padding-top: 4px;
-    padding-left: 3px;
-    font-weight: 400;
+.match:selected label.plugin.info,
+.match:hover label.plugin.info {
+  color: var(--selected-fg-color);
 }
 
-list>#plugin:first-child {
-    margin-top: .3rem;
+.match:selected label.match.description,
+.match:hover label.match.description {
+  color: color-mix(in srgb, var(--selected-fg-color) 90%, transparent);
 }
 
-list>#plugin:last-child {
-    margin-bottom: .3rem;
+/* ===== Plugin info label ===== */
+label.plugin.info {
+  color: var(--fg-color);
+  font-size: 1rem;
+  min-width: 160px;
+  text-align: left;
 }
 
-list>#plugin:hover {
-    padding: .7rem;
+/* ===== Description label ===== */
+label.match.description {
+  font-size: 0rem;
+  color: var(--fg-color);
 }
 
-box#main {
-    border-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    border-width: 1px;
-    border-style: solid;
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 5px;
-    padding: .7rem;
-}
-
-zlabel#plugin {
-    font-size: 14px;
+/* ===== Fade-in animation ===== */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

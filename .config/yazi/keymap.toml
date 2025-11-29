@@ -1,7 +1,0 @@
-[manager]
-prepend_keymap = [
-    { on   = [ "c", "a" ], run  = "plugin compress", desc = "Archive selected files" },
-    { on   = [ ".", "s" ], run  = "plugin what-size", desc = "Calc size of selection or cwd" },
-    { on   = "T", run  = "plugin hide-preview", desc = "Hide or show preview" },
-    { on   = "M", run  = "plugin max-preview", desc = "Maximize or restore preview" }
-]

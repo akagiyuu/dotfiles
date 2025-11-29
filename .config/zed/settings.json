@@ -7,15 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "icon_theme": "Material Icon Theme",
   "restore_on_startup": "last_session",
   "base_keymap": "VSCode",
   "vim_mode": true,
   "ui_font_size": 15,
   "buffer_font_size": 15,
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "VScode Dark Plus",
-    "dark": "One Dark"
+    "dark": "VSCode Dark Modern"
   },
   "buffer_font_family": "JetBrains Mono",
   "buffer_line_height": "comfortable",

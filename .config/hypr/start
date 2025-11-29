@@ -4,6 +4,7 @@
 swww-daemon &
 waybar &
 hypridle &
+fcitx5 &
 
 eval $(/usr/bin/gnome-keyring-daemon --start)
 export $(dbus-launch)
